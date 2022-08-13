@@ -2,6 +2,7 @@ from exts import db
 from datetime import datetime
 
 
+
 class EmailCaptchaModel(db.Model):
     __tablename__ = "email_captcha"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -10,6 +11,7 @@ class EmailCaptchaModel(db.Model):
     create_time = db.Column(db.DateTime, default=datetime.now)
 
 
+#　登录
 class UserModel(db.Model):
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
