@@ -4,6 +4,7 @@ import time
 from paho.mqtt import client as mqtt_client
 
 
+# 设置 MQTT Broker 连接参数
 broker = '43.138.132.49'
 port = 1883
 topic = "/python/mqtt"
@@ -11,6 +12,7 @@ topic = "/python/mqtt"
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
 
 
+# MQTT连接函数
 def connect_mqtt():
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
@@ -23,7 +25,7 @@ def connect_mqtt():
     client.connect(broker, port)
     return client
 
-
+# 发布消息
 def publish(client):
     msg_count = 0
     while True:
