@@ -16,6 +16,10 @@ bp = Blueprint("user", __name__, url_prefix="/user")
 def index():
     return render_template("index.html")
 
+@bp.route("/mainindex")
+def mainindex():
+    return render_template("mainindex.html")
+
 @bp.route("/bounded")
 def bounded():
     return render_template("bounded.html")
@@ -39,30 +43,28 @@ def login():
         return render_template("login.html")
     else:
         form = LoginForm(request.form)
-        email = form.email.data
-        password_input = form.password.data
-        user_model = UserModel.query.filter_by(email=email).first()
-        if user_model:
-            if check_password_hash(user_model.password, password=password_input):
-                print("登录成功")
-                session['user_id'] = user_model.id
-                return redirect("/")
+        if form.validate():
+            email = form.email.data
+            password_input = form.password.data
+            user_model = UserModel.query.filter_by(email=email).first()
+            if user_model:
+                if check_password_hash(user_model.password, password=password_input):
+                    print("登录成功")
+                    session['user_id'] = user_model.id
+                    return redirect("/")
+                else:
+                    print("密码输入错误")
+                    flash("密码输入错误")
+                    return redirect(url_for("user.login"))
             else:
-                print("密码输入错误")
-                flash("密码输入错误")
-                return redirect(url_for("user.login"))
+                print("该用户不存在，请注册")
+                flash("该用户不存在，请注册")
+                return redirect(url_for("user.register"))
         else:
-            print("该用户不存在，请注册")
-            flash("该用户不存在，请注册")
-            return redirect(url_for("user.register"))
+            print("请输入正确格式的账号或密码")
+            flash("请输入正确格式的账号或密码")
+            return redirect(url_for("user.login"))
 
-        email = form.email.data
-        print(type(EmailCaptchaModel.query.filter_by(email=email).first()))
-        print(form.validate())
-        # 不知道为什么这个判断格式总是报错
-        print("请输入正确格式的账号或密码")
-        flash("请输入正确格式的账号或密码")
-        return redirect(url_for("user.login"))
 
 
 
@@ -111,7 +113,6 @@ def get_captcha():
         )
         mail.send(message)
         captcha_model = EmailCaptchaModel.query.filter_by(email=email).first()
-        print("captcha_model:",type(captcha_model))
         if captcha_model:
             captcha_model.captcha = captcha
             captcha_model.create_time = datetime.datetime.now()
