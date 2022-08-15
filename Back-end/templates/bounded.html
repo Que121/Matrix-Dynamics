@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}关联设备{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+  <style type="text/css">
+    .actor {
+
+      position: absolute;
+      top: 900px;
+      left: 40%;
+      height: 100px;
+    }
+
+    .weibo {
+      position: absolute;
+      border: none;
+      top: 1000px;
+      left: 42%;
+    }
+
+    .weixin {
+      position: absolute;
+      border: none;
+      top: 1000px;
+      left: 47%;
+    }
+
+    .feishu {
+      position: absolute;
+      border: none;
+      top: 1000px;
+      left: 52%;
+    }
+
+    .down {
+      position: absolute;
+      top: 1100px;
+      left: 42%;
+    }
+
+  </style>
+  <img class="logo1" src="/static/images/logo1.png">
+  <div>
+    <h1 align="center" style="margin-top: 100px;">已绑定设备</h1>
+  </div>
+  <br>
+
+
+  <div class="bounded1">
+
+    <br>
+    <div id="a"><a href="#" class="device1"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备1</a></div>
+    <div id="b"><a href="#" class="device2"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备2</a></div>
+    <div id="c"><a href="#" class="device3"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备3</a></div>
+    <br>
+    <div id="d"><a href="#" class="device4"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备4</a></div>
+    <div id="e"><a href="#" class="+"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;+</a></div>
+  </div>
+  <div class="actor">
+    <p align="center"><strong>矩阵动力</strong></p>
+    <p>地址：北京市海淀区清华东路35号</p>
+    <p>电话： </p>
+    <p>邮箱： </p>
+  </div>
+  <div class="weibo"><a href="#"><img src="/static/images/weibo.png" width="50px" height="50px"></a></div>
+  <a href="#" class="weixin"><img src="/static/images/weixin.png" width="50px" height="50px"></a>
+  <a href="#" class="feishu"><img src="/static/images/feishu.png" width="50px" height="50px"></a>
+  <div class="down"><p>@2022.矩阵动力版权所有</p></div>
+
+{% endblock %}

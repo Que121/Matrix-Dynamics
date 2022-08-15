@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}选购{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+  <style type="text/css">
+    .leftblue {
+      position: absolute;
+      margin-left: 0;
+      margin-top: 1%;
+      z-index: -1;
+    }
+
+    .actor {
+      position: absolute;
+      top: 2250px;
+      left: 44%;
+      height: 100px;
+      z-index: 1;
+    }
+
+    .weibo {
+      position: absolute;
+      border: none;
+      top: 2350px;
+      left: 43%;
+      z-index: 1;
+    }
+
+    .weixin {
+      position: absolute;
+      border: none;
+      top: 2350px;
+      left: 48%;
+      z-index: 1;
+    }
+
+    .feishu {
+      position: absolute;
+      border: none;
+      top: 2350px;
+      left: 53%;
+      z-index: 1;
+      }
+
+    .down {
+      position: absolute;
+      top: 2400px;
+      left: 45%;
+      z-index: 1;
+    }
+
+  </style>
+  <img class="rightblue" src="/static/images/right.png" width="80px" height="100px">
+  <img class="logo1" src="logo1.png">
+  <p align="center" style="margin-top: 80px;font-size: 15px;">不想自己造？</p>
+  <h1 align="center" style="margin-top: 10px;font-size: 50px;">可以购买成品！</h1>
+
+  <div id="p1left"><img src="/static/images/chengpintu.png" width="200px"></div>
+  <div id="p1right"><p style="font-size: 20px;">成品购买链接及各种信息</p></div>
+  <!-- 第二页 -->
+  <div style="margin-top: 65%;"><img class="leftblue" src="/static/images/left.png" width="80px" height="100px"></div>
+  <p align="center" style="font-size: 15px;">想自己造？</p>
+  <h1 align="center" style="font-size: 50px;">可以购买配件！</h1>
+  <div id="p2left" style="margin-top: 72%;"><img src="/static/images/peijiantu.png" width="200px"></div>
+  <div id="p2right" style="margin-top: 72%;"><p style="font-size: 20px;">配件购买链接及各种信息</p></div>
+  <!-- 署 -->
+
+  <div class="actor">
+    <p align="center" style="font-size: 10px;"><strong>矩阵动力</strong></p>
+    <p style="font-size: 5px;">地址：北京市海淀区清华东路35号</p>
+    <p style="font-size: 5px;">电话： </p>
+    <p style="font-size: 5px;">邮箱： </p>
+  </div>
+  <div class="weibo"><a href="#"><img src="/static/images/weibo.png" width="50px" height="50px"></a></div>
+  <a href="#" class="weixin"><img src="/static/images/weixin.png" width="50px" height="50px"></a>
+  <a href="#" class="feishu"><img src="/static/images/feishu.png" width="50px" height="50px"></a>
+  <div class="down" style="font-size: 5px;"><p>@2022.矩阵动力版权所有</p></div>
+
+
+{% endblock %}

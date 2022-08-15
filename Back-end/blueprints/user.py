@@ -16,6 +16,17 @@ bp = Blueprint("user", __name__, url_prefix="/user")
 def index():
     return render_template("index.html")
 
+@bp.route("/bounded")
+def bounded():
+    return render_template("bounded.html")
+
+@bp.route("/team")
+def team():
+    return render_template("team.html")
+
+@bp.route("/purchase")
+def purchase():
+    return render_template("purchase.html")
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
