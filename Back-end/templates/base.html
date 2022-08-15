@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap/bootstrap@4.6.mini.css') }}">
     <!--背景颜色的设置放到最后-->
     <link rel="stylesheet" href="{{ url_for('static',filename='css/init.css') }}">
-    {% block head %}{% endblock %}
+    {% block head %}
+
+    {% endblock %}
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -19,10 +21,19 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">首页 <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{ url_for('user.index') }}">首页 <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">关于我们</a>
+        <a class="nav-link" href="#">关于</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">设备</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">团队</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">购买</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('user.login') }}">登录</a>

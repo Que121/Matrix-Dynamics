@@ -6,4 +6,65 @@
 
 {% endblock %}
 
-{% block body %}<h1>首页</h1>{% endblock %}
+{% block body %}
+  <!--<link href="{{ url_for('static',filename='bootstrap/styleabout.css') }}" rel="stylesheet">-->
+  <img class="logo1" src="/static/images/logo1.png">
+  <div id="right"></div>
+  <div>
+    <h1 align="center" style="margin-top: 0px;font-size: 50px;">我们开源</h1>
+    <p align="center" style="margin-top: 10px;">包括机械、电控、算法</p>
+  </div>
+  <div id="left"></div>
+
+  <div id="mid"></div>
+  <p align="center" class="connect"><a href="#" style="font-size: 30px;">开源链接</a></p>
+
+  <style type="text/css">
+    .actor {
+      position: absolute;
+      top: 370px;
+      left: 44%;
+      height: 100px;
+    }
+
+    .weibo {
+      position: absolute;
+      border: none;
+      top: 500px;
+      left: 43%;
+    }
+
+    .weixin {
+      position: absolute;
+      border: none;
+      top: 500px;
+      left: 48%;
+    }
+
+    .feishu {
+      position: absolute;
+      border: none;
+      top: 500px;
+      left: 53%;
+    }
+
+    .down {
+      position: absolute;
+      top: 550px;
+      left: 45%;
+    }
+  </style>
+
+  <div class="actor">
+    <p align="center" style="font-size: 10px;"><strong>矩阵动力</strong></p>
+    <p style="font-size: 10px;" >地址：北京市海淀区清华东路35号</p>
+    <p style="font-size: 10px;" >电话：xxxxxxxxxx</p>
+    <p style="font-size: 10px;" >邮箱：xxxxxxxxxx@xxx.com</p>
+  </div>
+
+
+  <div class="weibo"><a href="#"><img src="/static/images/weibo.png" width="50px" height="50px"></a></div>
+  <a href="#" class="weixin"><img src="/static/images/weixin.png" width="50px" height="50px"></a>
+  <a href="#" class="feishu"><img src="/static/images/feishu.png" width="50px" height="50px"></a>
+  <div class="down" style="font-size: 5px;"><p align="center">@2022.矩阵动力版权所有</p></div>
+{% endblock %}
