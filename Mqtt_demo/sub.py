@@ -5,7 +5,7 @@ from paho.mqtt import client as mqtt_client
 # 设置 MQTT Broker 连接参数
 broker = '43.138.132.49'
 port = 1883
-topic = "/python/mqtt"
+topic = "car_control"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 100)}'
 
@@ -26,7 +26,7 @@ def connect_mqtt() -> mqtt_client:
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
         print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
-
+        
     client.subscribe(topic)
     client.on_message = on_message
 
