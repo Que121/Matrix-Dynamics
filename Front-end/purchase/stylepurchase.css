@@ -9,7 +9,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 5px 200px;
     position: relative;
     z-index: 100;
 }
@@ -17,7 +17,7 @@ nav {
     nav ul li {
     display: inline-block;
     list-style: none;
-    margin: 10px 90px;
+    margin: 5px 50px;
     }
     
     nav ul li a {
@@ -42,8 +42,8 @@ body{
 }
 #p1left{
     position:absolute;
-    width: 500px;
-    height: 700px;
+    width: 400px;
+    height: 600px;
     top: 40%;
     left: 12%;
     background-color: white;
@@ -54,8 +54,8 @@ body{
 }
 #p1right{
     position:absolute;
-    width: 500px;
-    height: 700px;
+    width: 400px;
+    height: 600px;
     top: 40%;
     left: 55%;
     background-color: white;
@@ -72,8 +72,8 @@ body{
 }
 #p2left{
     position:absolute;
-    width: 500px;
-    height: 700px;
+    width: 400px;
+    height: 600px;
     top: 40%;
     left: 12%;
     background-color: white;
@@ -84,8 +84,8 @@ body{
 }
 #p2right{
     position:absolute;
-    width: 500px;
-    height: 700px;
+    width: 400px;
+    height: 600px;
     top: 40%;
     left: 55%;
     background-color: white;
@@ -106,6 +106,8 @@ body{
     left: 44%;
     height: 100px;
     z-index: 1;
+    color: gray;
+    
 }
 .weibo{
     position: absolute;
@@ -133,4 +135,5 @@ body{
     top:2400px;
     left: 45%;
     z-index: 1;
+    color: gray;
 }
