@@ -15,7 +15,7 @@ topic = "car_state"
 client_id = f'python-mqtt-{random.randint(0, 100)}'
 msg = "default"
 car_state = "ID:01_GPS:E11919.42N2605.30GTime:00:00:00_OFF_OFF_Wt:000_D:0.00_P:0.0Y:0.0B:000_T:31.7_H:49.0_Ready"
-
+car_state = "ID:01_GPS:E11919.42N2605.30GTime:00:00:00_OFF_OFF_Wt:000_D:0.00_P:0.0Y:0.0B:000_T:31.7_H:49.0_Error1"
 # MQTT连接函数
 
 
@@ -45,16 +45,18 @@ def subscribe(client: mqtt_client):
 
 
 # 小车回报报文解码定义
-car_gps_longitude = 0
-car_gps_latitude = 0
-car_motor = 0
-car_water = 0
-car_distance = 0
-car_pitch = 0
-car_battery = 0
-car_temperature = 0
-car_humidity = 0
+car_header = 0  # 帧头
+car_gps_longitude = 0  # 经度（东/西）E/W
+car_gps_latitude = 0  # 纬度（南/北）S/N
+car_motor = 0  # 电机启动（车辆 水泵）
+car_water = 0  # 剩余水位信息
+car_distance = 0  # 前方距离（cm）
+car_pitch = 0  # 云台PItch
+car_battery = 0  # 云台Yaw
+car_temperature = 0  # 温度
+car_humidity = 0  # 湿度
 car_end = 0  # 帧尾
+car_errorcode = 0  # 故障代码
 
 
 # 解码
@@ -62,7 +64,7 @@ def decode():
     global car_header, car_gps_longitude, car_gps_latitude, \
         car_gps_GTime, car_motor, car_water, car_distance,  \
         car_pitch, car_yaw, car_battery, car_temperature,  \
-        car_humidity, car_end
+        car_humidity, car_end, car_errorcode
 # =======================================================================================
     for index_header in range(len(car_state[:(len(car_state)-5)])):
         if ((f"{car_state[index_header]}{car_state[index_header+1]}") == "ID"):
@@ -108,12 +110,19 @@ def decode():
 # =======================================================================================
         elif ((f"{car_state[index_header]}") == "H"):
             car_humidity = car_state[index_header+2:index_header+6]
-    car_end = car_state[(len(car_state)-5):]
+# =======================================================================================
+    car_end = car_state[(len(car_state)-6):(len(car_state)-1)]
+    car_errorcode = car_state[(len(car_state)-1)]
+    for index_header in range(len(car_state)):
+        if ((f"{car_state[index_header]}") == "R"):
+            car_end = car_state[(len(car_state)-5):]
+            car_errorcode = 0
 # =======================================================================================
     print(f"{car_header}\n{car_gps_longitude}\n{car_gps_latitude} \
       \n{car_gps_GTime}\n{car_motor}\n{car_water} \
       \n{car_distance}\n{car_pitch}\n{car_yaw} \
-      \n{car_battery}\n{car_temperature}\n{car_humidity}\n{car_end}")
+      \n{car_battery}\n{car_temperature}\n{car_humidity}\n{car_end} \
+      \n{car_errorcode}")
 
 
 def run():
@@ -123,4 +132,5 @@ def run():
 
 
 if __name__ == '__main__':
-    run()
+    # run()
+    decode()
