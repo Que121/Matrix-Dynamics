@@ -9,7 +9,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 5px 200px;
     position: relative;
     z-index: 100;
 }
@@ -17,7 +17,7 @@ nav {
     nav ul li {
     display: inline-block;
     list-style: none;
-    margin: 10px 90px;
+    margin: 5px 50px;
     }
     
     nav ul li a {
@@ -27,7 +27,9 @@ nav {
     }
     
     nav ul li a:hover {
-    color: blue;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
     }
 
 body{
@@ -78,30 +80,37 @@ body{
 }
 .actor{
     position: absolute;
-    top:900px;
+    top:100%;
     left: 44%;
     height: 100px;
+    z-index: 1;
+    color: gray;
 }
 .weibo{
     position: absolute;
     border:none;
-    top:1000px;
+    top:111%;
     left: 43%;
+    z-index: 1;
 }
 .weixin{
     position: absolute;
     border:none;
-    top:1000px;
+    top:111%;
     left: 48%;
+    z-index: 1;
 }
 .feishu{
     position: absolute;
     border:none;
-    top:1000px;
+    top:111%;
     left: 53%;
+    z-index: 1;
 } 
 .down{
     position: absolute;
-    top:1050px;
-    left: 45%;
+    top:117%;
+    left: 46%;
+    z-index: 1;
+    color: gray;
 }

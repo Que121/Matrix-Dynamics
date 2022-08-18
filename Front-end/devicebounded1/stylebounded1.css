@@ -9,7 +9,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 5px 200px;
     position: relative;
     z-index: 100;
 }
@@ -17,7 +17,7 @@ nav {
     nav ul li {
     display: inline-block;
     list-style: none;
-    margin: 10px 90px;
+    margin: 5px 50px;
     }
     
     nav ul li a {
@@ -64,30 +64,30 @@ body{
     width: 150px;
     height: 150px;
     margin-left: 100px;
-    margin-top: 1px;
+    margin-top: 150px;
     background-color: white;
-    border-color: black;
-    border-width: 1px;
+    border-color: rgb(207, 204, 204);
+    border-width: 2px;
     border-style: solid;
 }
 #b{
     width: 150px;
     height: 150px;
     margin-left: 50px;
-    margin-top: 1px;
+    margin-top: 150px;
     background-color: white;
-    border-color: black;
-    border-width: 1px;
+    border-color: rgb(207, 204, 204);
+    border-width: 2px;
     border-style: solid;
 }
 #c{
     width: 150px;
     height: 150px;
     margin-left: 50px;
-    margin-top: 1px;
+    margin-top: 150px;
     background-color: white;
-    border-color: black;
-    border-width: 1px;
+    border-color: rgb(207, 204, 204);
+    border-width: 2px;
     border-style: solid;
 }
 #d{
@@ -95,10 +95,10 @@ body{
     width: 150px;
     height: 150px;
     margin-left: 100px;
-    margin-top: 200px;
+    margin-top: 350px;
     background-color: white;
-    border-color: black;
-    border-width: 1px;
+    border-color: rgb(207, 204, 204);
+    border-width: 2px;
     border-style: solid;
 }
 #e{
@@ -106,39 +106,46 @@ body{
     width: 150px;
     height: 150px;
     margin-left: 300px;
-    margin-top: 200px;
+    margin-top: 350px;
     background-color: white;
-    border-color: black;
-    border-width: 1px;
+    border-color: rgb(207, 204, 204);
+    border-width: 2px;
     border-style: solid;
 }
 .actor{
-    
     position: absolute;
-    top:900px;
-    left: 40%;
+    top:1200px;
+    left: 44%;
     height: 100px;
+    z-index: 1;
+    color: gray;
 }
 .weibo{
     position: absolute;
     border:none;
-    top:1000px;
-    left: 42%;
+    top:1320px;
+    left: 44%;
+    z-index: 1;
+
 }
 .weixin{
     position: absolute;
     border:none;
-    top:1000px;
-    left: 47%;
+    top:1320px;
+    left: 48%;
+    z-index: 1;
 }
 .feishu{
     position: absolute;
     border:none;
-    top:1000px;
+    top:1320px;
     left: 52%;
+    z-index: 1;
 } 
 .down{
     position: absolute;
-    top:1100px;
-    left: 42%;
+    top:1380px;
+    left: 46%;
+    z-index: 1;
+    color: gray;
 }
