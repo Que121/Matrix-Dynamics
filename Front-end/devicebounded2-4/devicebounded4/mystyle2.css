@@ -40,7 +40,9 @@ header .navigation li a {
 header .navigation li a:hover{
     background-color: rgb(44,101,248);
 }
-
+.active {
+    background-color: rgb(44,101,248);
+}
 /* 左上角的矩阵动力logo */
 #logo {
     position:absolute; 
