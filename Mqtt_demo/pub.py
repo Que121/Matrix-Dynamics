@@ -12,7 +12,7 @@ topic = "car_control"
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
 
 # 小车控制报文定义
-frame_header = "CTR"  # 头帧
+frame_header = "CTR"  # 帧头
 car_id_ten = 0  # 小车id十位
 car_id_bit = 1  # 小车id个位
 forward_speed = 5  # 前进速度 0-9 1-5 0停车 1-5前进 6-9后退
