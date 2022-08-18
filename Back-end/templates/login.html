@@ -1,37 +1,150 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}用户登录界面{% endblock %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% block head %}
+  <link rel="stylesheet" href="/static/bootstrap/mainindex/style.css">
+  <link rel="stylesheet" href="ttps://fonts.gstatic.com">
 
-{% endblock %}
-
-{% block body %}
-  <div class="row mt-4">
-    <dic class="col"></dic>
-    <dic class="col">
-      <form action="{{ url_for("user.login") }}" method="POST">
-    <div class="form-group">
-      <label for="exampleInputEmail1">邮箱-Email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">密码-Password</label>
-      <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-    </div>
+</head>
 
 
-        {% for message in get_flashed_messages() %}
-          <div class="form-group">
-            <div class="text-danger">{{ message }}</div>
-          </div>
-        {% endfor %}
+<body>
 
-        <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block">登录</button>
-        </div>
-  </form>
-    </dic>
-    <dic class="col"></dic>
+
+<div class="fit">
+  <div class="header">
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('user.index') }}">关于</a></li>
+        <li><a href="{{ url_for('user.bounded') }}">设备</a></li>
+        <li><a href="{{ url_for('user.mainindex') }}">首页</a></li>
+        <li><a href="{{ url_for('user.team') }}">团队</a></li>
+        <li><a href="{{ url_for('user.purchase') }}">购买</a></li>
+        <li><a href="{{ url_for('user.register') }}">注册</a></li>
+        <li><a href="{{ url_for('user.login') }}">登录</a></li>
+      </ul>
+    </nav>
   </div>
-{% endblock %}
+
+  <div class="logo">
+    <img src="/static/images/logo.png" alt="" style="margin-top:0 ;"><img src="/static/images/smallround.png"
+                                                                          alt="无法显示图片"
+                                                                          style="margin-left: 450px; margin-top: 80px;">
+
+  </div>
+
+  <img src="/static/images/biground.png" alt="无法显示图片" class="biground">
+  <div class="text-box">
+    <h1 style="font-size:50px; ">充满期待的<br>物联网产品</h1>
+    <p style="color: rgb(136,136,136);">在被窝里、在厨房里、在沙发上、在外地出差，随<br>时随地控制花园里的灌溉小车</p>
+  </div>
+
+
+  <div class="container">
+    <img src="/static/images/浅蓝.png" alt="无法显示图片" class="pic3">
+    <img src="/static/images/浅蓝.png" alt="无法显示图片" class="pic4">
+    <img src="/static/images/username.png " alt="无法显示图片 " class="pic1">
+    <img src="/static/images/password.png " alt="无法显示图片 " class="pic2">
+
+
+    <div class="row mt-4">
+      <dic class="col"></dic>
+      <dic class="col">
+        <form action="{{ url_for("user.login") }}" method="POST">
+          <div class="form-group">
+            <input type="email" class="input1" id="exampleInputEmail1" aria-describedby="emailHelp"
+                   name="email" placeholder="请输入邮箱">
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="input2" id="exampleInputPassword1" placeholder="请输入密码">
+          </div>
+
+         {% for message in get_flashed_messages() %}
+              <div class="text_danger">
+                <div >{{ message }}</div>
+              </div>
+            {% endfor %}
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">登录</button>
+          </div>
+        </form>
+      </dic>
+      <dic class="col"></dic>
+    </div>
+
+    <a href="{{ url_for('user.reset') }}"><p style="float:left;" class="text1">忘记密码&nbsp</p></a>
+    <a href="{{ url_for('user.register') }}"><p class="text2" >注册账号</p></a>
+
+
+  </div>
+
+
+  <img src="/static/images/biground.png" alt="无法显示图片" class="big">
+  <img src="/static/images/smallround.png" alt="无法显示图片" class="small">
+
+  <div class="tx1">
+    <img src="/static/images/浅蓝.png" alt="无法显示图片" class="blue1">
+    <img src="/static/images/高效.png" alt="无法显示图片" class="img1">
+    <p style="font-size:23px; color: rgb(40,40,40);" class="content11">高效</p><br>
+    <p style="color:rgb(169,169,169) ; text-align: center;" class="content12">解放双手，一键启动，通<br>过web网页或是小程序在 <br>线控制小车</p>
+
+  </div>
+
+  <div class="tx2">
+    <img src="/static/images/浅蓝.png" alt="无法显示图片" class="blue2">
+    <img src="/static/images/智能.png" alt="无法显示图片" class="img2">
+    <p style="font-size:23px; color: rgb(40,40,40);" class="content21">智能</p><br>
+    <p style="color:rgb(169,169,169) ; text-align: center;" class="content22">
+      灌溉小车机器人加装了视<br>觉模块和雷达系统，可以<br>实现自动规划路径，自动<br>灌溉</p>
+  </div>
+
+  <div class="tx3">
+    <img src="/static/images/浅蓝.png" alt="无法显示图片" class="blue3">
+    <img src="/static/images/稳定.png" alt="无法显示图片" class="img3">
+    <p style="font-size:23px; color: rgb(40,40,40);" class="content31">稳定</p><br>
+    <p style="color:rgb(169,169,169) ; text-align: center;" class="content32">
+      使用履带底盘，可保证泥<br>泞环境通过性。底盘搭载<br>喷灌设备和摄像头，可实<br>现浇水和实时视频监控。</p>
+  </div>
+
+  <div class="introduce">
+    <h1 style="font-size:50px ;">智能高效的<br>物联网设计</h1><br><br>
+    <p style="color:rgb(169,169,169) ;">传统方案使用人工浇水或预埋管道浇水，前者难以<br>保证浇水量固定，无法做到雨露均沾；后者不仅成<br>本高，而且存在老化开裂等问题，需要定期维护。</p>
+  </div>
+
+  <div class="login2">
+
+    <p class="login2tx1" style="font-size:18px">你还在犹豫什么？</p>
+    <br>
+    <p style="font-size:60px; font-weight: 700;" class="login2tx2">马上登录试用！</p>
+
+
+  </div>
+  <div class="bottom1">
+    <p>矩阵动力</p>
+  </div>
+
+
+  <div class="bottom2">
+
+    <p>地址:北京市海淀区清华东路35号北京林业大学</p>
+    <p>电话:298-63985466</p>
+
+    <p>邮箱:qh13005968844@gmail.com</p>
+  </div>
+
+  <div class="bottomimg">
+    <img src="/static/images/weibo.png" alt="无法显示图片"> <img src="/static/images/wechat.png" alt="无法显示图片"><img
+          src="/static/images/twitter.png" alt="无法显示图片">
+
+  </div>
+
+  <p class="copyright"> &#169 aone. 版权所有. </p>
+</div>
+</body>
+
+</html>

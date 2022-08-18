@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}关联设备{% endblock %}
+
+{% block head %}
+  <title>device bounded1</title>
+  <link rel="stylesheet" href="/static/bootstrap/bounded/stylebounded1.css">
+  <style type="text/css">a {
+    text-decoration: none
+  }</style>
+{% endblock %}
+
+{% block body %}
+
+  <img class="logo1" src="/static/images/logo1.png">
+  <div>
+    <h1 align="center" style="margin-top: 100px;">已绑定设备</h1>
+  </div>
+  <br>
+  <div><img class="leftblue" src="/static/images/leftblue.png" width: 10px;
+            height: 10px;>
+    <img class="rightblue" src="/static/images/rightblue.png"></div>
+
+  <div class="bounded1">
+
+    <br>
+    <div id="a"><a href="{{ url_for('user.equipment3') }}" class="device1"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备1</a></div>
+    <div id="b"><a href="{{ url_for('user.equipment3') }}" class="device2"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备2</a></div>
+    <div id="b"><a href="{{ url_for('user.equipment1_1') }}" class="device3"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;+</a></div>
+    <br>
+
+  </div>
+  <div class="actor">
+    <p align="center"><strong>矩阵动力</strong></p>
+    <p>地址：北京市海淀区清华东路35号</p>
+    <p>电话： </p>
+    <p>邮箱： </p>
+  </div>
+  <div class="weibo"><a href="#"><img src="/static/images/weibo.png" width="50px" height="50px"></a></div>
+  <a href="#" class="weixin"><img src="/static/images/weixin.png" width="50px" height="50px"></a>
+  <a href="#" class="feishu"><img src="/static/images/feishu.png" width="50px" height="50px"></a>
+  <div class="down"><p>@2022.矩阵动力版权所有</p></div>
+
+{% endblock %}

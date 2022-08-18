@@ -3,8 +3,14 @@ function bindCaptchaBtnClick() {
         // 括号外加上$代表jquery对象$("#captcha-btn")
         var $this = $(this);
         var email = $("input[name='email']").val();
+        var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+        isok = reg.test(email);
         if(!email){
             alert("请先输入邮箱！");
+            return;
+        }
+        if(!isok){
+            alert("邮箱格式不正确");
             return;
         }
         // 通过js发送网络请求：ajax
@@ -44,6 +50,9 @@ function bindCaptchaBtnClick() {
         })
     });
 }
+
+
+
 
 // 带$代表在文档加载完之后才会执行
 $(function () {

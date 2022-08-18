@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="/static/bootstrap/mainindex/style.css">
-  <link rel="stylesheet" href="ttps://fonts.gstatic.com">
+      <link rel="stylesheet" href="/static/bootstrap/success/style2.css">
+    <link rel="stylesheet" href="ttps://fonts.gstatic.com">
 
 </head>
 
@@ -45,42 +45,8 @@
 
 
   <div class="container">
-    <img src="/static/images/浅蓝.png" alt="无法显示图片" class="pic3">
-    <img src="/static/images/浅蓝.png" alt="无法显示图片" class="pic4">
-    <img src="/static/images/username.png " alt="无法显示图片 " class="pic1">
-    <img src="/static/images/password.png " alt="无法显示图片 " class="pic2">
 
-
-    <div class="row mt-4">
-      <dic class="col"></dic>
-      <dic class="col">
-        <form action="{{ url_for("user.login") }}" method="POST">
-          <div class="form-group">
-            <input type="email" class="input1" id="exampleInputEmail1" aria-describedby="emailHelp"
-                   name="email" placeholder="请输入邮箱">
-          </div>
-          <div class="form-group">
-            <input type="password" name="password" class="input2" id="exampleInputPassword1" placeholder="请输入密码">
-          </div>
-
-         {% for message in get_flashed_messages() %}
-              <div class="text_danger">
-                <div >{{ message }}</div>
-              </div>
-            {% endfor %}
-
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">登录</button>
-          </div>
-        </form>
-      </dic>
-      <dic class="col"></dic>
-    </div>
-
-    <a href="{{ url_for('user.reset') }}"><p style="float:left;" class="text1">忘记密码&nbsp</p></a>
-    <a href="{{ url_for('user.register') }}"><p class="text2" >注册账号</p></a>
-
-
+    <p class="welcome">注册成功</p><img src="/static/images/logo.png" alt="无法显示图片" class="welcomeimg">
   </div>
 
 

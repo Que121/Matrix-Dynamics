@@ -1,36 +1,86 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify, session, flash
 from exts import mail, db
 from flask_mail import Message
-from models import EmailCaptchaModel, UserModel
+from models import EmailCaptchaModel, UserModel, ResetCaptchaModel
 import string
 import random
-import datetime,time
-from .forms import RegisterForm, LoginForm
+import datetime, time
+import blueprints
+from blueprints.forms import RegisterForm, LoginForm, ResetForm
 from werkzeug.security import generate_password_hash, check_password_hash
 
-
 bp = Blueprint("user", __name__, url_prefix="/user")
+
+
+@bp.route("/equipment")
+def equipment():
+    return render_template("equipment.html")
+
+
+@bp.route("/equipment1_1")
+def equipment1_1():
+    return render_template("equipment1_1.html")
+
+
+@bp.route("/equipment1_2")
+def equipment1_2():
+    return render_template("equipment1_2.html")
+
+
+@bp.route("equipment3")
+def equipment3():
+    return render_template("equipment3.html")
+
+
+@bp.route("/success")
+def success():
+    return render_template("success.html")
+
+
+@bp.route("/success2")
+def success2():
+    return render_template("success2.html")
+
+
+@bp.route("/bounded2")
+def bounded2():
+    return render_template("bounded2.html")
+
+
+@bp.route("/bounded3")
+def bounded3():
+    return render_template("bounded3.html")
+
+
+@bp.route("/bounded4")
+def bounded4():
+    return render_template("bounded4.html")
 
 
 @bp.route("/")
 def index():
     return render_template("index.html")
 
+
 @bp.route("/mainindex")
 def mainindex():
     return render_template("mainindex.html")
+
 
 @bp.route("/bounded")
 def bounded():
     return render_template("bounded.html")
 
+
 @bp.route("/team")
 def team():
     return render_template("team.html")
 
+
 @bp.route("/purchase")
 def purchase():
     return render_template("purchase.html")
+
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -51,7 +101,7 @@ def login():
                 if check_password_hash(user_model.password, password=password_input):
                     print("登录成功")
                     session['user_id'] = user_model.id
-                    return redirect("/")
+                    return redirect(url_for("user.success"))
                 else:
                     print("密码输入错误")
                     flash("密码输入错误")
@@ -59,13 +109,11 @@ def login():
             else:
                 print("该用户不存在，请注册")
                 flash("该用户不存在，请注册")
-                return redirect(url_for("user.register"))
+                return redirect(url_for("user.login"))
         else:
             print("请输入正确格式的账号或密码")
             flash("请输入正确格式的账号或密码")
             return redirect(url_for("user.login"))
-
-
 
 
 @bp.route('/register', methods=['GET', 'POST'])
@@ -73,6 +121,7 @@ def register():
     if request.method == 'GET':
         return render_template("register.html")
     else:
+        print("POST方法进行中")
         form = RegisterForm(request.form)
         if form.validate():
             print("验证成功")
@@ -88,13 +137,15 @@ def register():
             print(type(user_model))
             if user_model:
                 print("该邮箱已被注册，请重新输入")
+                flash("该邮箱已被注册，请重新输入")
                 return redirect(url_for("user.register"))
             user = UserModel(username=username, email=email, password=hash_password, join_time=create_time)
             db.session.add(user)
             db.session.commit()
-            return redirect(url_for("user.login"))
+            return redirect(url_for("user.success2"))
         else:
             print("注册验证失败")
+            flash("注册验证失败")
             return redirect(url_for("user.register"))
 
 
@@ -127,3 +178,67 @@ def get_captcha():
     else:
         # code:400，代表客户端错误
         return jsonify({"code": 400, "message": "请先传递邮箱！"})
+
+
+@bp.route("/mail", methods=['POST'])
+def my_mail():
+    email = request.form.get("email")
+    letters = string.ascii_letters + string.digits
+    captcha = "".join(random.sample(letters, 4))
+
+    if email:
+        message = Message(
+            subject="矩阵动力",
+            recipients=[email],
+            body=f"您的验证码是{captcha}只能用于验证找回操作，请不要告诉任何人"
+        )
+        mail.send(message)
+        reset_captcha_model = ResetCaptchaModel.query.filter_by(email=email).first()
+        if reset_captcha_model:
+            reset_captcha_model.captcha = captcha
+            reset_captcha_model.create_time = datetime.datetime.now()
+            db.session.commit()
+        else:
+            reset_captcha_model = ResetCaptchaModel(email=email, captcha=captcha)
+            db.session.add(reset_captcha_model)
+            db.session.commit()
+        print("captcha",captcha)
+        return jsonify({"code": 200})
+    else:
+        return jsonify({"code": 400, "message": "请先传递邮箱！"})
+
+
+@bp.route("/reset", methods=['GET', 'POST'])
+def reset():
+    if request.method == 'GET':
+        return render_template("password.html")
+    else:
+        print("111POST方法")
+        form = ResetForm(request.form)
+        if form.validate():
+            email = form.email.data
+            captcha = form.captcha.data
+            password = form.password.data
+            user = ResetCaptchaModel(email=email)
+            hash_password = generate_password_hash(password=password)
+            user_model = UserModel.query.filter_by(email=email).first()
+            # 如果查询到该邮箱存在执行重新修改密码的操作
+            if user_model:
+                print("确实是已有账户")
+                user_model.password = hash_password
+                db.session.commit()
+                print("修改成功")
+                return redirect(url_for("user.resetsuccess"))
+            else:
+                print("请注册新的账户")
+                flash("请注册新的账户")
+                return redirect(url_for("user.reset"))
+        else:
+            print("修改失败")
+            flash("注册失败，您的输入有问题")
+            return redirect(url_for("user.reset"))
+
+
+@bp.route("/resetsuccess")
+def resetsuccess():
+    return render_template("resetsuccess.html")

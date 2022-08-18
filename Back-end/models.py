@@ -10,6 +10,14 @@ class EmailCaptchaModel(db.Model):
     create_time = db.Column(db.DateTime)
 
 
+class ResetCaptchaModel(db.Model):
+    __tablename__ = "email_reset_captcha"
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    email = db.Column(db.String(100), nullable=True, unique=True)
+    captcha = db.Column(db.String(10), nullable=False)
+    create_time = db.Column(db.DateTime)
+
+
 class UserModel(db.Model):
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
