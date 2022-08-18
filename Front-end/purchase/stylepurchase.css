@@ -52,11 +52,6 @@ body{
     height: 600px;
     top: 40%;
     left: 12%;
-    background-color: white;
-    border-color: rgb(189, 189, 189);
-    border-width: 1px;
-    border-style: solid;
-    z-index: -1;
 }
 #p1right{
     position:absolute;
