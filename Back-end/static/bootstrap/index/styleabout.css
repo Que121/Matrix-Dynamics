@@ -4,7 +4,6 @@
     padding: 0 10%;
     background: black;
 }
-
 nav {
     width: 100%;
     display: flex;
@@ -14,39 +13,41 @@ nav {
     position: relative;
     z-index: 100;
 }
-
-nav ul li {
+    
+    nav ul li {
     display: inline-block;
     list-style: none;
-    margin: 5px 50px;
-}
-
-nav ul li a {
+    margin: 5px 35px;
+    }
+    
+    nav ul li a {
     text-decoration: none;
     color: aliceblue;
     transition: 0.2 linear;
-}
+    padding: 8px 15px;
+    border-radius: 20px;
+    }
+    
+    nav ul li a:hover {
+        background-color: rgb(44,101,248);
+    }
 
-nav ul li a:hover {
-    border-color: white;
-    border-style: solid;
-    border-width: 1px;
-}
-
-body {
+    .active {
+        background-color: rgb(44,101,248);
+    }
+    
+body{
     background-color: white;
     background-size: 100% auto;
 }
-
-.logo1 {
-
+.logo1{
+    
     position: absolute;
     margin-left: 50px;
     margin-top: 1%;
 }
-
-#left {
-    position: absolute;
+#left{
+    position:absolute;
     width: 400px;
     height: 400px;
     margin-left: 50px;
@@ -55,9 +56,8 @@ body {
     border: none;
     z-index: -1;
 }
-
-#right {
-    position: absolute;
+#right{
+    position:absolute;
     width: 400px;
     height: 400px;
     margin-left: 65%;
@@ -66,9 +66,8 @@ body {
     border: none;
     z-index: -1;
 }
-
-#mid {
-    position: absolute;
+#mid{
+    position:absolute;
     width: 1000px;
     height: 200px;
     top: 50%;
@@ -79,48 +78,42 @@ body {
     border-style: solid;
     z-index: -1;
 }
-
-.connect {
+.connect{
     margin-top: 16%;
     z-index: 1;
 }
-
-.actor {
+.actor{
     position: absolute;
-    top: 100%;
+    top:100%;
     left: 44%;
     height: 100px;
     z-index: 1;
     color: gray;
 }
-
-.weibo {
+.weibo{
     position: absolute;
-    border: none;
-    top: 111%;
+    border:none;
+    top:111%;
     left: 43%;
     z-index: 1;
 }
-
-.weixin {
+.weixin{
     position: absolute;
-    border: none;
-    top: 111%;
+    border:none;
+    top:111%;
     left: 48%;
     z-index: 1;
 }
-
-.feishu {
+.feishu{
     position: absolute;
-    border: none;
-    top: 111%;
+    border:none;
+    top:111%;
     left: 53%;
     z-index: 1;
-}
-
-.down {
+} 
+.down{
     position: absolute;
-    top: 117%;
+    top:117%;
     left: 46%;
     z-index: 1;
     color: gray;

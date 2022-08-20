@@ -12,11 +12,14 @@
 <header>
   <ul class="navigation">
     <li><a href="{{ url_for('user.index') }}">关于</a></li>
-    <li><a href="{{ url_for('user.bounded') }}">设备</a></li>
     <li><a href="{{ url_for('user.mainindex') }}">首页</a></li>
     <li><a href="{{ url_for('user.team') }}">团队</a></li>
     <li><a href="{{ url_for('user.purchase') }}">购买</a></li>
-    <li><a href="{{ url_for('user.register') }}">注册</a></li>
+    {% if user %}
+      <Li><a href="{{ url_for('user.mine') }}">{{ user.username }}</a></Li>
+    {% else %}
+      <li><a href="{{ url_for('user.register') }}">注册</a></li>
+    {% endif %}
   </ul>
 </header>
 
@@ -29,6 +32,28 @@
          style="position: relative;text-align: left;margin-top: -76px;">
   </div>
   <!-- 右下角的直角三角形 -->
+</div>
+
+<div style="margin-right: 200px; " align="right">
+  <table border="1">
+    <tr>
+      <th>水量</th>
+      <th>电量</th>
+    </tr>
+    <tr>
+      <td>70%</td>
+      <td>70%</td>
+    </tr>
+  </table>
+
+
+
+  <button style="margin-right: 6.5px">
+    <p>点击此处</p>
+    <p>进行刷新</p>
+  </button>
+
+
 </div>
 
 <div align="center" style="width: 800px;margin:-570px auto 0 auto;">
@@ -70,12 +95,16 @@
     <br>
     <h class="size2"><b>操作日志</b></h>
   </button>
+  <br>
+  <button name="forward">前进</button>
+  <br>
+  <button name="left">向左</button>
+  <a>&nbsp;</a>
+  <button name="right">向右</button>
+  <br>
+  <button name="backward">后退</button>
 </div>
 
-<div style="margin: 0 auto;width:1250px;text-align: right;">
-  <img src="/static/images/Triangle_right.png" alt="" id="Triangle_right"
-       style="position: relative;margin-top: -500px;">
-</div>
 
 <!-- 版权 -->
 <div id="div4">

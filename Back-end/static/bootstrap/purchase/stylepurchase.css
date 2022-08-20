@@ -4,7 +4,6 @@
     padding: 0 10%;
     background: black;
 }
-
 nav {
     width: 100%;
     display: flex;
@@ -14,50 +13,48 @@ nav {
     position: relative;
     z-index: 100;
 }
-
-nav ul li {
+    
+    nav ul li {
     display: inline-block;
     list-style: none;
-    margin: 5px 50px;
-}
-
-nav ul li a {
+    margin: 5px 35px;
+    }
+    
+    nav ul li a {
     text-decoration: none;
     color: aliceblue;
     transition: 0.2 linear;
-}
+    padding: 8px 15px;
+    border-radius: 20px;
+    }
+    
+    nav ul li a:hover {
+        background-color: rgb(44,101,248);
+    }
 
-nav ul li a:hover {
-    color: blue;
-}
+    .active {
+        background-color: rgb(44,101,248);
+    }
 
-body {
+body{
     background-color: white;
     background-size: 100% auto;
 }
-
-.logo1 {
-
+.logo1{
+    
     position: absolute;
     margin-left: 50px;
     margin-top: 1%;
 }
-
-#p1left {
-    position: absolute;
+#p1left{
+    position:absolute;
     width: 400px;
     height: 600px;
     top: 40%;
     left: 12%;
-    background-color: white;
-    border-color: rgb(189, 189, 189);
-    border-width: 1px;
-    border-style: solid;
-    z-index: -1;
 }
-
-#p1right {
-    position: absolute;
+#p1right{
+    position:absolute;
     width: 400px;
     height: 600px;
     top: 40%;
@@ -68,16 +65,14 @@ body {
     border-style: solid;
     z-index: -1;
 }
-
-.rightblue {
+.rightblue{
     position: absolute;
     margin-left: 50%;
     margin-top: 0;
     z-index: -1;
 }
-
-#p2left {
-    position: absolute;
+#p2left{
+    position:absolute;
     width: 400px;
     height: 600px;
     top: 40%;
@@ -88,9 +83,8 @@ body {
     border-style: solid;
     z-index: -1;
 }
-
-#p2right {
-    position: absolute;
+#p2right{
+    position:absolute;
     width: 400px;
     height: 600px;
     top: 40%;
@@ -101,51 +95,45 @@ body {
     border-style: solid;
     z-index: -1;
 }
-
-.leftblue {
+.leftblue{
     position: absolute;
     margin-left: 0;
     margin-top: 1%;
     z-index: -1;
 }
-
-.actor {
+.actor{
     position: absolute;
-    top: 2250px;
+    top:2250px;
     left: 44%;
     height: 100px;
     z-index: 1;
     color: gray;
-
+    
 }
-
-.weibo {
+.weibo{
     position: absolute;
-    border: none;
-    top: 2350px;
+    border:none;
+    top:2350px;
     left: 43%;
     z-index: 1;
 }
-
-.weixin {
+.weixin{
     position: absolute;
-    border: none;
-    top: 2350px;
+    border:none;
+    top:2350px;
     left: 48%;
     z-index: 1;
 }
-
-.feishu {
+.feishu{
     position: absolute;
-    border: none;
-    top: 2350px;
+    border:none;
+    top:2350px;
     left: 53%;
     z-index: 1;
-}
-
-.down {
+} 
+.down{
     position: absolute;
-    top: 2400px;
+    top:2400px;
     left: 45%;
     z-index: 1;
     color: gray;
