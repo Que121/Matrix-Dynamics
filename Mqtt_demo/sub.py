@@ -17,36 +17,37 @@ msg = "default"
 car_state = "ID:01_GPS:E11919.42N2605.30GTime:00:00:00_OFF_OFF_Wt:000_D:0.00_P:0.0Y:0.0B:000_T:31.7_H:49.0_Ready"
 # 01
 # E11919.42
-# N2605.30       
+# N2605.30
 # 00:00:00
 # OFF_OFF
-# 000       
+# 000
 # 0.00
 # 0.0
-# 0.0       
+# 0.0
 # 000
 # 31.7
 # 49.0
-# Ready       
+# Ready
 # 0
-
 # car_state = "ID:01_GPS:E11919.42N2605.30GTime:00:00:00_OFF_OFF_Wt:000_D:0.00_P:0.0Y:0.0B:000_T:31.7_H:49.0_Error1"
 # 01
 # E11919.42
-# N2605.30       
+# N2605.30
 # 00:00:00
 # OFF_OFF （ON_OFF）
-# 000       
+# 000
 # 0.00
 # 0.0
-# 0.0       
+# 0.0
 # 000
 # 31.7
 # 49.0
-# Error       
+# Error
 # 1
 
 # MQTT连接函数
+
+
 def connect_mqtt() -> mqtt_client:
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
@@ -153,12 +154,12 @@ def decode():
       \n{car_errorcode}")
 
 
-def run():
+def sub_run():
     client = connect_mqtt()
     subscribe(client)
     client.loop_forever()
 
 
-if __name__ == '__main__':
-    run() # 连接服务器
-    # decode() # 测试
+# if __name__ == '__main__':
+    # sub_run()  # 连接服务器
+    # decode()  # 测试
