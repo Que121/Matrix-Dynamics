@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+=======
+input[type=password]::-ms-reveal { display: none; }
+.header {
+    width: 100%;
+    height: 8vh;
+    padding: 0 10%;
+    background: black;
+>>>>>>> 59cb2762cfa34fb8be471c50c1729322ef71935b
 }
 
 header {
@@ -119,24 +128,34 @@ body{
     color: aliceblue;
     border:none;
 }
-.password{
-    margin-top: 10px;
-    width: 500px;
+
+.box {
+    width: 503px;
     height: 50px;
-    background-color: white;
     border: 1px solid gray;
-    color: gray;
-    border-bottom-color: rgb(169, 166, 166);
+    text-align: center;
+    margin: 10px auto;
 }
-.repassword{
-    margin-top: 10px;
-    width: 500px;
-    height: 50px;
+
+.kuang {
+    outline: none;
+    border: 0;
+    color: gray;
     background-color: white;
-    border: 1px solid gray;
-    color: gray;
     border-bottom-color: rgb(169, 166, 166);
+    margin-left: -304px;
+    margin-top: 17px;
 }
+
+#img1,
+#img2 {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 6px;
+    left: 280px;
+}
+
 .regist{
     margin-top: 20px;
     width: 300px;

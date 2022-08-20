@@ -52,7 +52,11 @@
 
                 <input type="text" name="Name " placeholder="输入手机号/用户名 " class="input1">
 
-                <input type="password" name="pwd " placeholder="输入密码" class="input2">
+                <div class="box">
+                    <input id="ipt1" type="password" name="pwd " placeholder="输入密码" class="input2">
+                    <label for="">
+                    <img src="close.png" alt="" id="img1">
+                </div>
 
                 <p style="float:left;" class="text1">忘记密码&nbsp</p>
                 <p class="text2">注册账号</p>
@@ -126,5 +130,20 @@
         <p class="copyright"> &#169 aone. 版权所有. </p>
     </div>
 </body>
-
+<script>
+    var ipt = document.getElementById('ipt1');
+    var img = document.getElementById('img1');
+    var flag = 0;
+    img.onclick = function() {
+        if (flag == 0) {  //判断flag==0
+            ipt1.type = 'text';
+            img1.src = 'open.png';
+            flag = 1; //赋值
+        } else {
+            ipt1.type = 'password';
+            img1.src = 'close.png';
+            flag = 0; //赋值
+        }
+    }
+</script>
 </html>
