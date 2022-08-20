@@ -30,16 +30,20 @@
     </div>
         
     <div id="div2">
-        <p align="center">
-        <input class="kuang" type="password" placeholder="请输入您的新密码" 
-        size="45" >
-        </p>
-        <p align="center" style="margin-top: 10px;">
-        <input class="kuang" type="password" placeholder="请确认您的新密码" 
-        size="45">
-        </p>
+        <div class="box">
+            <input id="ipt1" class="kuang" type="password" placeholder="请输入您的新密码" 
+            size="30" >
+            <label for="">
+            <img src="close.png" alt="" id="img1">
+        </div>
+        <div class="box" style="margin-top: 10px;">
+            <input id="ipt2" class="kuang" type="password" placeholder="请确认您的新密码" 
+            size="30" >
+            <label for="">
+            <img src="close.png" alt="" id="img2">
+        </div>
     </div>
-        
+    
     <div id="div3" align="center">
         <input id="next" type="button" value="完成" style="border-radius: 25px;margin-top: 50px;">
     </div>
@@ -64,4 +68,36 @@
         ©2022 aone.版权所有.
     </p>
 </body>
+<script>
+    var ipt = document.getElementById('ipt1');
+    var img = document.getElementById('img1');
+    var flag = 0;
+    img.onclick = function() {
+        if (flag == 0) {  //判断flag==0
+            ipt1.type = 'text';
+            img1.src = 'open.png';
+            flag = 1; //赋值
+        } else {
+            ipt1.type = 'password';
+            img1.src = 'close.png';
+            flag = 0; //赋值
+        }
+    }
+</script>
+<script>
+    var ipt = document.getElementById('ipt2');
+    var img = document.getElementById('img2');
+    var flag = 0;
+    img.onclick = function() {
+        if (flag == 0) {  //判断flag==0
+            ipt2.type = 'text';
+            img2.src = 'open.png';
+            flag = 1; //赋值
+        } else {
+            ipt2.type = 'password';
+            img2.src = 'close.png';
+            flag = 0; //赋值
+        }
+    }
+</script>
 </html>
