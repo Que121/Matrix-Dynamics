@@ -1,3 +1,4 @@
+input[type=password]::-ms-reveal { display: none; }
 /* 导航栏 */
 * {
     margin: 0;
@@ -71,14 +72,37 @@ p {
     font-size: 14px;
     margin-top: 50px;
 }
-    
-.kuang {
+ 
+.box {
+    width: 450px;
+    border: 1px solid #ccc;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.kuang2 {
+    border: 1px solid #ccc;
     outline-style: none;
-    border: 1px solid #ccc;;
     padding: 26px 35px;
     font-size: 16px;
 }
-    
+
+.kuang {
+    outline: none;
+    border: 0;
+    padding: 26px 35px;
+    font-size: 16px;
+}
+
+#img1,
+#img2 {
+    position: relative;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+}
+
 #div2 {
     margin-top: 40px;
 }

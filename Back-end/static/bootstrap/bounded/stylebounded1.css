@@ -4,7 +4,6 @@
     padding: 0 10%;
     background: black;
 }
-
 nav {
     width: 100%;
     display: flex;
@@ -14,60 +13,60 @@ nav {
     position: relative;
     z-index: 100;
 }
-
-nav ul li {
+    
+    nav ul li {
     display: inline-block;
     list-style: none;
-    margin: 5px 50px;
-}
-
-nav ul li a {
+    margin: 5px 35px;
+    }
+    
+    nav ul li a {
     text-decoration: none;
     color: aliceblue;
     transition: 0.2 linear;
-}
+    padding: 8px 15px;
+    border-radius: 20px;
+    }
+    
+    nav ul li a:hover {
+        background-color: rgb(44,101,248);
+    }
 
-nav ul li a:hover {
-    color: blue;
-}
+    .active {
+        background-color: rgb(44,101,248);
+    }
 
-body {
+body{
     background-color: white;
     background-size: 100% auto;
 }
-
-.bounded1 {
+.bounded1{
     position: absolute;
-    top: 45%;
+    top:45%;
     left: 50%;
-    width: 800px;
-    transform: translate(-50%, -50%);
-    padding: 600px, 600px;
+    width: 800px;transform: translate(-50%,-50%);
+    padding: 600px,600px; 
     display: flex;
-
-
+    
+        
 }
-
-.logo1 {
-
+.logo1{
+    
     position: absolute;
     margin-left: 50px;
     margin-top: 1%;
 }
-
-.leftblue {
+.leftblue{
     margin-left: 1px;
     margin-top: 1px;
-
+    
 }
-
-.rightblue {
+.rightblue{
     position: absolute;
     margin-left: 72%;
     margin-top: 30%;
 }
-
-#a {
+#a{
     width: 150px;
     height: 150px;
     margin-left: 100px;
@@ -77,8 +76,7 @@ body {
     border-width: 2px;
     border-style: solid;
 }
-
-#b {
+#b{
     width: 150px;
     height: 150px;
     margin-left: 50px;
@@ -88,8 +86,7 @@ body {
     border-width: 2px;
     border-style: solid;
 }
-
-#c {
+#c{
     width: 150px;
     height: 150px;
     margin-left: 50px;
@@ -99,9 +96,8 @@ body {
     border-width: 2px;
     border-style: solid;
 }
-
-#d {
-    position: absolute;
+#d{
+    position:absolute;
     width: 150px;
     height: 150px;
     margin-left: 100px;
@@ -111,9 +107,8 @@ body {
     border-width: 2px;
     border-style: solid;
 }
-
-#e {
-    position: absolute;
+#e{
+    position:absolute;
     width: 150px;
     height: 150px;
     margin-left: 300px;
@@ -123,44 +118,39 @@ body {
     border-width: 2px;
     border-style: solid;
 }
-
-.actor {
+.actor{
     position: absolute;
-    top: 1200px;
+    top:1200px;
     left: 44%;
     height: 100px;
     z-index: 1;
     color: gray;
 }
-
-.weibo {
+.weibo{
     position: absolute;
-    border: none;
-    top: 1320px;
+    border:none;
+    top:1320px;
     left: 44%;
     z-index: 1;
 
 }
-
-.weixin {
+.weixin{
     position: absolute;
-    border: none;
-    top: 1320px;
+    border:none;
+    top:1320px;
     left: 48%;
     z-index: 1;
 }
-
-.feishu {
+.feishu{
     position: absolute;
-    border: none;
-    top: 1320px;
+    border:none;
+    top:1320px;
     left: 52%;
     z-index: 1;
-}
-
-.down {
+} 
+.down{
     position: absolute;
-    top: 1380px;
+    top:1380px;
     left: 46%;
     z-index: 1;
     color: gray;

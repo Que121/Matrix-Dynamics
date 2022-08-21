@@ -36,10 +36,13 @@ def connect_mqtt():
     return client
 
 # 发布消息
-def publish(client):  
+
+
+def publish(client):
     while True:
         time.sleep(2)
-        msg = f"{frame_header}{car_id_ten}{car_id_bit}{forward_speed}{steering_speed}{power_on}{water_pump}{frame_end}"  # 待发布的消息
+        # 待发布的消息
+        msg = f"{frame_header}{car_id_ten}{car_id_bit}{forward_speed}{steering_speed}{power_on}{water_pump}{frame_end}"
         result = client.publish(topic, msg)
         # result: [0, 1]
         status = result[0]
@@ -47,14 +50,13 @@ def publish(client):
             print(f"发给小车的控制报文为：{msg}")
         else:
             print(f"Failed to send message to topic {topic}")
-        
 
 
-def run():
+def pub_run():
     client = connect_mqtt()
     client.loop_start()
     publish(client)
 
 
-if __name__ == '__main__':
-    run()
+# if __name__ == '__main__':
+#     run()

@@ -13,12 +13,14 @@
   <img class="logo1" src="/static/images/logo1.png">
   <img class="logo2" src="/static/images/logo2.png">
   <div class="logon">
+
     <div class="row mt-4">
       <dic class="col"></dic>
       <dic class="col">
         <!--要先说明method否则会默认为GET方法-->
         <form method="POST" action="{{ url_for('user.register') }}">
-
+          <h1 align="center"><strong>用户注册</strong></h1>
+          <p align="center">欢迎使用</p>
           <div class="form-group">
             <input type="text" class="ID" name="username" placeholder="请输入用户名">
             <button class="nicheng" type="nicheng" name="nicheng">昵称可用</button>
@@ -56,10 +58,10 @@ position:static">获取验证码
           </div>
 
           {% for message in get_flashed_messages() %}
-              <div class="text_danger" align="center">
-                <div >{{ message }}</div>
-              </div>
-            {% endfor %}
+            <div class="text_danger" align="center">
+              <div>{{ message }}</div>
+            </div>
+          {% endfor %}
 
 
           <div>

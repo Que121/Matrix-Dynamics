@@ -1,0 +1,135 @@
+ /* 导航栏 */
+            
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 100px;
+    z-index: 10;
+    background: black;
+}
+
+header .navigation {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    left: 150px;
+    top: 15px;
+    margin: 0 auto;
+}
+
+header .navigation li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 75px;
+}
+
+header .navigation li a {
+    text-decoration: none;
+    color: aliceblue;
+    transition: 0.2 linear;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+header .navigation li a:hover {
+    background-color: rgb(44, 101, 248);
+}
+
+.active {
+    background-color: rgb(44, 101, 248);
+}
+/* 左上角logo图标 */
+
+#logo1 {
+    position: absolute;
+    left: 20px;
+    top: 120px;
+}
+    .exit{
+        margin-top: 20px;
+        width: 300px;
+        height: 50px;
+        background-color: rgba(7, 73, 255, 0.832);
+        color: aliceblue;
+        border: none;
+        
+        border-radius: 30px 30px 30px 30px;
+    }
+    .save{
+        margin-top: 20px;
+        width: 300px;
+        height: 50px;
+        background-color: rgba(7, 73, 255, 0.832);
+        color: aliceblue;
+        border: none;
+        
+        border-radius: 30px 30px 30px 30px;
+    }
+    body{
+        background-color: white;
+        background-size: 100% auto;
+    }
+    #logo2 {
+        position: absolute;
+        left: 1200px;
+        top: 120px;
+        
+    }
+     .exit1{
+        position: absolute;
+        top: 500px;;
+        margin-left: 50%;
+        left: 50px;
+        width: 500px;transform: translate(-50%,-50%);
+        padding: 200px,100px; 
+        display: flex;
+    } 
+    
+    .actor{
+        position: absolute;
+        top:900px;
+        left: 44%;
+        height: 100px;
+        z-index: 1;
+        color: gray;
+    }
+    .weibo{
+        position: absolute;
+        border:none;
+        top:1000px;
+        left: 43%;
+        z-index: 1;
+    
+    }
+    .weixin{
+        position: absolute;
+        border:none;
+        top:1000px;
+        left: 48%;
+        z-index: 1;
+    }
+    .feishu{
+        position: absolute;
+        border:none;
+        top:1000px;
+        left: 53%;
+        z-index: 1;
+    } 
+    .down{
+        position: absolute;
+        top:1050px;
+        left: 46%;
+        z-index: 1;
+        color: gray;
+    }

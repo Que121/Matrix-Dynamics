@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, jsonify, session, flash
+from flask import Blueprint, render_template, request, redirect, url_for, jsonify, session, flash, g
 from exts import mail, db
 from flask_mail import Message
 from models import EmailCaptchaModel, UserModel, ResetCaptchaModel
@@ -69,6 +69,7 @@ def mainindex():
 
 @bp.route("/bounded")
 def bounded():
+
     return render_template("bounded.html")
 
 
@@ -101,6 +102,8 @@ def login():
                 if check_password_hash(user_model.password, password=password_input):
                     print("登录成功")
                     session['user_id'] = user_model.id
+                    if hasattr(g, "user"):
+                        print(g.user.username)
                     return redirect(url_for("user.success"))
                 else:
                     print("密码输入错误")
@@ -115,6 +118,15 @@ def login():
             flash("请输入正确格式的账号或密码")
             return redirect(url_for("user.login"))
 
+@bp.route("/mine")
+def mine():
+    return render_template("mine.html")
+
+@bp.route("/logout")
+def logout():
+    # 清除session中的所有数据
+    session.clear()
+    return redirect(url_for('user.login'))
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():

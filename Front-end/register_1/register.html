@@ -8,23 +8,25 @@
     <link rel="stylesheet" href="styleregister_1.css">
 </head>
 <body>
-    
-  
-
-    <div id="main">
-    <div class="header">
-        <nav>
-        <ul>
+    <header>
+        <ul class="navigation">
             <li> <a href="#">关于</a> </li>
             <li> <a href="#">设备</a> </li>
-            <li> <a class="active" href="#">首页</a> </li>
-            <li> <a href="#">团队</a> </li>
+            <li> <a class="active" href="">首页</a> </li>
+            <li> <a  href="#">团队</a> </li>
             <li> <a href="#">购买</a> </li>
         </ul>
-        </nav>
+    </header>
+
+    <div style="margin: 0 auto;width:1250px">
+        <!-- 左上角logo图标 -->
+        <img id="logo1" src="logo1.png" style="position: relative;text-align: left;">
     </div>
-    <img class="logo1" src="logo1.png" > 
-    <img class="logo2"src="logo2.png">
+    <div style="margin: 0 auto;width:1250px">
+        <!-- 右侧logo图标 -->
+        <img id="logo2" src="logo2.png" style="position: relative;text-align: right;">
+    </div>
+
     <div class="logon">
         <div>
         <h1 align="center"><strong>用户注册</strong></h1>
@@ -39,11 +41,17 @@
         <div>
             <input  class="exam" type="text" name="exam" placeholder="  输入验证码">
             <button class="getexam" type="getexam" name="getexam" ><strong>获取验证码</strong></button></div>
-        <div>
-            <input  class="password" type="password" name="password" placeholder="  输入密码"></div>
-        <div>
-            <input  class="repassword" type="password" name="repassword" placeholder="  确认密码"></div><br>
-            <button class="regist" type="regist" background="regist" ><strong>确定注册</strong></button></div>
+        <div class="box">
+            <input  id="ipt1" class="kuang" type="password" name="password" placeholder=" 输入密码">
+            <label for="">
+            <img src="close.png" alt="" id="img1">
+        </div>
+        <div class="box">
+            <input  id="ipt2" class="kuang" type="password" name="repassword" placeholder=" 确认密码">
+            <label for="">
+            <img src="close.png" alt="" id="img2">
+        </div><br>
+        <button class="regist" type="regist" background="regist" ><strong>确定注册</strong></button></div>
     </form>
     </div>
     <div class="actor">
@@ -58,4 +66,36 @@
     <div class="down" style="font-size: 5px;"><p>&copy;2022 zone.版权所有.</p>  </div> 
 </div>
 </body>
+<script>
+    var ipt = document.getElementById('ipt1');
+    var img = document.getElementById('img1');
+    var flag = 0;
+    img.onclick = function() {
+        if (flag == 0) {  //判断flag==0
+            ipt1.type = 'text';
+            img1.src = 'open.png';
+            flag = 1; //赋值
+        } else {
+            ipt1.type = 'password';
+            img1.src = 'close.png';
+            flag = 0; //赋值
+        }
+    }
+</script>
+<script>
+    var ipt = document.getElementById('ipt2');
+    var img = document.getElementById('img2');
+    var flag = 0;
+    img.onclick = function() {
+        if (flag == 0) {  //判断flag==0
+            ipt2.type = 'text';
+            img2.src = 'open.png';
+            flag = 1; //赋值
+        } else {
+            ipt2.type = 'password';
+            img2.src = 'close.png';
+            flag = 0; //赋值
+        }
+    }
+</script>
 </html>

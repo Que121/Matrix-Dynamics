@@ -1,61 +1,83 @@
+<<<<<<< HEAD
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+=======
+input[type=password]::-ms-reveal { display: none; }
 .header {
     width: 100%;
     height: 8vh;
     padding: 0 10%;
     background: black;
+>>>>>>> 59cb2762cfa34fb8be471c50c1729322ef71935b
 }
-nav {
+
+header {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 5px 200px;
-    position: relative;
-    z-index: 100;
+    align-items: center;
+    padding: 15px 100px;
+    z-index: 10;
+    background: black;
 }
-    
-    nav ul li {
+
+header .navigation {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    left: 150px;
+    top: 15px;
+    margin: 0 auto;
+}
+
+header .navigation li {
     display: inline-block;
     list-style: none;
-    margin: 5px 35px;
-    }
-    
-    nav ul li a {
+    margin: 10px 75px;
+}
+
+header .navigation li a {
     text-decoration: none;
     color: aliceblue;
     transition: 0.2 linear;
     padding: 8px 15px;
     border-radius: 20px;
-    }
-    
-    nav ul li a:hover {
-        background-color: rgb(44,101,248);
-    }
+}
 
-    .active {
-        background-color: rgb(44,101,248);
-    }
+header .navigation li a:hover {
+    background-color: rgb(44, 101, 248);
+}
+
+.active {
+    background-color: rgb(44, 101, 248);
+}
+/* 左上角logo图标 */
+
+#logo1 {
+    position: absolute;
+    left: 20px;
+    top: 120px;
+}
     
 body{
     background-color: white;
     background-size: 100% auto;
 }
-.logo1{
+
+#logo2 {
+    position: absolute;
+    left: 1200px;
+    top: 120px;
     
-    position: absolute;
-    margin-left: 50px;
-    margin-top: 50px;
-}
-.logo2{
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    margin-left: 1200px;
-    margin-top: 70px;
 }
  .logon{
     position: absolute;
-    top:50%;
+    top:500px;
     left: 50%;
     width: 500px;transform: translate(-50%,-50%);
     padding: 200px,100px; 
@@ -106,24 +128,34 @@ body{
     color: aliceblue;
     border:none;
 }
-.password{
-    margin-top: 10px;
-    width: 500px;
+
+.box {
+    width: 503px;
     height: 50px;
-    background-color: white;
     border: 1px solid gray;
-    color: gray;
-    border-bottom-color: rgb(169, 166, 166);
+    text-align: center;
+    margin: 10px auto;
 }
-.repassword{
-    margin-top: 10px;
-    width: 500px;
-    height: 50px;
+
+.kuang {
+    outline: none;
+    border: 0;
+    color: gray;
     background-color: white;
-    border: 1px solid gray;
-    color: gray;
     border-bottom-color: rgb(169, 166, 166);
+    margin-left: -304px;
+    margin-top: 17px;
 }
+
+#img1,
+#img2 {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 6px;
+    left: 280px;
+}
+
 .regist{
     margin-top: 20px;
     width: 300px;
@@ -136,8 +168,9 @@ body{
 }
 .actor{
     position: absolute;
-    top:900px;
-    left: 44%;
+    top:930px;
+    left: 50%;
+    margin-left: -110px;
     height: 100px;
     z-index: 1;
     color: gray;
@@ -146,7 +179,8 @@ body{
     position: absolute;
     border:none;
     top:1000px;
-    left: 43%;
+    left: 50%;
+    margin-left: -120px;
     z-index: 1;
 
 }
@@ -154,20 +188,23 @@ body{
     position: absolute;
     border:none;
     top:1000px;
-    left: 48%;
+    left: 50%;
+    margin-left: -50px;
     z-index: 1;
 }
 .feishu{
     position: absolute;
     border:none;
     top:1000px;
-    left: 53%;
+    left: 50%;
+    margin-left: 20px;
     z-index: 1;
 } 
 .down{
     position: absolute;
     top:1050px;
-    left: 46%;
+    left: 50%;
+    margin-left: -80px;
     z-index: 1;
     color: gray;
 }
