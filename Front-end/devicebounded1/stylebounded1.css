@@ -1,40 +1,59 @@
-.header {
-    width: 100%;
-    height: 8vh;
-    padding: 0 10%;
-    background: black;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-nav {
+
+header {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 5px 200px;
-    position: relative;
-    z-index: 100;
+    align-items: center;
+    padding: 15px 100px;
+    z-index: 10;
+    background: black;
 }
-    
-    nav ul li {
+
+header .navigation {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    left: 150px;
+    top: 15px;
+    margin: 0 auto;
+}
+
+header .navigation li {
     display: inline-block;
     list-style: none;
-    margin: 5px 35px;
-    }
-    
-    nav ul li a {
+    margin: 10px 75px;
+}
+
+header .navigation li a {
     text-decoration: none;
     color: aliceblue;
     transition: 0.2 linear;
     padding: 8px 15px;
     border-radius: 20px;
-    }
-    
-    nav ul li a:hover {
-        background-color: rgb(44,101,248);
-    }
+}
 
-    .active {
-        background-color: rgb(44,101,248);
-    }
+header .navigation li a:hover {
+    background-color: rgb(44, 101, 248);
+}
+
+.active {
+    background-color: rgb(44, 101, 248);
+}
+/* 左上角logo图标 */
+
+#logo1 {
+    position: absolute;
+    left: 20px;
+    top: 120px;
+}
 
 body{
     background-color: white;
@@ -42,29 +61,24 @@ body{
 }
 .bounded1{
     position: absolute;
-    top:45%;
-    left: 50%;
+    top:-800px;
+    left: 410px;
     width: 800px;transform: translate(-50%,-50%);
     padding: 600px,600px; 
     display: flex;
     
         
 }
-.logo1{
-    
-    position: absolute;
-    margin-left: 50px;
-    margin-top: 1%;
-}
-.leftblue{
+
+#leftblue{
     margin-left: 1px;
     margin-top: 1px;
     
 }
-.rightblue{
-    position: absolute;
-    margin-left: 72%;
-    margin-top: 30%;
+#rightblue{
+        position: absolute;
+        left: 1100px;
+        top: -750px;
 }
 #a{
     width: 150px;

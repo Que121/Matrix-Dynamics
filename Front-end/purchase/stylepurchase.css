@@ -1,41 +1,59 @@
-.header {
-    width: 100%;
-    height: 8vh;
-    padding: 0 10%;
-    background: black;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-nav {
+
+header {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 5px 200px;
-    position: relative;
-    z-index: 100;
+    align-items: center;
+    padding: 15px 100px;
+    z-index: 10;
+    background: black;
 }
-    
-    nav ul li {
+
+header .navigation {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    left: 150px;
+    top: 15px;
+    margin: 0 auto;
+}
+
+header .navigation li {
     display: inline-block;
     list-style: none;
-    margin: 5px 35px;
-    }
-    
-    nav ul li a {
+    margin: 10px 75px;
+}
+
+header .navigation li a {
     text-decoration: none;
     color: aliceblue;
     transition: 0.2 linear;
     padding: 8px 15px;
     border-radius: 20px;
-    }
-    
-    nav ul li a:hover {
-        background-color: rgb(44,101,248);
-    }
+}
 
-    .active {
-        background-color: rgb(44,101,248);
-    }
+header .navigation li a:hover {
+    background-color: rgb(44, 101, 248);
+}
 
+.active {
+    background-color: rgb(44, 101, 248);
+}
+/* 左上角logo图标 */
+
+#logo1 {
+    position: absolute;
+    left: 20px;
+    top: 120px;
+}
 body{
     background-color: white;
     background-size: 100% auto;
@@ -47,18 +65,20 @@ body{
     margin-top: 1%;
 }
 #p1left{
-    position:absolute;
+    margin: 0 auto;
+    position:relative;
     width: 400px;
     height: 600px;
-    top: 40%;
-    left: 12%;
+    left: -500px;
+    top: 100px;
 }
 #p1right{
-    position:absolute;
+    margin: 0 auto;
+    position:relative;
     width: 400px;
     height: 600px;
-    top: 40%;
-    left: 55%;
+    left: 300px;
+    top: -500px;
     background-color: white;
     border-color: rgb(189, 189, 189);
     border-width: 1px;
@@ -72,11 +92,12 @@ body{
     z-index: -1;
 }
 #p2left{
-    position:absolute;
+    margin: 0 auto;
+    position:relative;
     width: 400px;
     height: 600px;
-    top: 40%;
-    left: 12%;
+    left: -400px;
+    top: 100px;
     background-color: white;
     border-color: rgb(189, 189, 189);
     border-width: 1px;
@@ -84,11 +105,12 @@ body{
     z-index: -1;
 }
 #p2right{
-    position:absolute;
+    margin: 0 auto;
+    position:relative;
     width: 400px;
     height: 600px;
-    top: 40%;
-    left: 55%;
+    left: 300px;
+    top: -500px;
     background-color: white;
     border-color: rgb(189, 189, 189);
     border-width: 1px;
@@ -97,7 +119,7 @@ body{
 }
 .leftblue{
     position: absolute;
-    margin-left: 0;
+    margin-left: -200px;
     margin-top: 1%;
     z-index: -1;
 }
