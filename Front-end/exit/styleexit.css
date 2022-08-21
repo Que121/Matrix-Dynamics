@@ -81,6 +81,11 @@ p {
         border-radius: 30px 30px 30px 30px;
         margin-left: 30%;
     }
+
+    .save:active,.exit:active {
+        background-color: #0099FF;
+    }
+
     body{
         background-color: white;
         background-size: 100% auto;
