@@ -1,16 +1,14 @@
-<<<<<<< HEAD
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-=======
+}
 input[type=password]::-ms-reveal { display: none; }
 .header {
     width: 100%;
     height: 8vh;
     padding: 0 10%;
     background: black;
->>>>>>> 59cb2762cfa34fb8be471c50c1729322ef71935b
 }
 
 header {
