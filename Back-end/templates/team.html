@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,70 +8,127 @@
   <title>团队界面</title>
   <link rel="stylesheet" href="/static/bootstrap/team/mystyle3.css">
 </head>
+
 <body>
 <!-- 导航栏 -->
 <header>
   <ul class="navigation">
-    <li><a href="{{ url_for('user.index') }}">关于</a></li>
-    <li><a href="{{ url_for('user.bounded') }}">设备</a></li>
-    <li><a href="{{ url_for('user.mainindex') }}">首页</a></li>
-    <li><a href="{{ url_for('user.team') }}">团队</a></li>
-    <li><a href="{{ url_for('user.purchase') }}">购买</a></li>
-    {% if user %}
-       <Li><a href="{{ url_for('user.mine') }}">{{ user.username }}</a></Li>
-    {% else %}
-      <li><a href="{{ url_for('user.register') }}">注册</a></li>
-    {% endif %}
+     <li><a href="{{ url_for('user.index') }}">关于</a></li>
+      <li><a href="{{ url_for('user.bounded') }}">设备</a></li>
+      <li><a href="{{ url_for('user.mainindex') }}">首页</a></li>
+      <li><a href="{{ url_for('user.team') }}">团队</a></li>
+      <li><a href="{{ url_for('user.purchase') }}">购买</a></li>
+      {% if user %}
+        <Li><a href="{{ url_for('user.mine') }}">{{ user.username }}</a></Li>
+      {% else %}
+        <li><a href="{{ url_for('user.register') }}">注册</a></li>
+      {% endif %}
   </ul>
 </header>
 
-<div>
-  <div style="margin: 0 auto;width:1250px">
-    <!-- 左上角logo图标 -->
-    <img id="logo" src="/static/images/logo.png" style="position: relative;text-align: left;">
-  </div>
-  <!-- 文字 -->
-  <p id="team">团队组成</p>
-  <p id="laiyuan">来自于北京林业大学</p>
+
+<div style="margin: 0 auto;width:1250px">
+  <!-- 左上角logo图标 -->
+  <img id="logo" src="/static/images/logo.png" style="position: relative;text-align: left;">
+</div>
+<!-- 文字 -->
+<p id="team">团队组成</p>
+<p id="laiyuan">来自于北京林业大学</p>
 </div>
 
 <div style="margin:0 auto;width: 1250px;">
+
   <!-- 左边正方形 -->
   <div style="position: relative;margin-top: 20px;text-align: left;">
     <img src="/static/images/square.png">
   </div>
   <!-- 成员信息 -->
-  <div style="width: 1000px;height: 300px; position: relative;
-        border: 1px solid rgb(176,176,176);margin: auto;
-        background-color: white;z-index: 10;margin-top: -400px;">
-    <h1 align="center">成员信息</h1>
+  <div style="width: 1000px;height: 800px; position: relative;margin: auto;border-radius: 20px;
+        background-color:white;z-index: 10;margin-top: -350px; border: 5px solid #E8E8E8;">
+    <!-- 成员信息 -->
+    <div class="members1" style="width: 800px;height: 300px;position: relative;margin: auto;">
+      <div class="card">
+        <div class="photo"><img src="/static/images/阙浩华.jpg" alt=""></div>
+        <h1>阙浩华</h1>
+        <h2>产品经理</h2>
+      </div>
+      <div class="card">
+        <div class="photo"><img src="/static/images/金雨.jpg" alt=""></div>
+        <h1>金雨</h1>
+        <h2>技术经理</h2>
+      </div>
+      <div class="card">
+        <div class="photo"><img src="/static/images/黄仲仪.jpg" alt=""></div>
+        <h1>黄仲仪</h1>
+        <h2>项目经理</h2>
+      </div>
+    </div>
+
+    <div class="members2" style="margin-top: 80px;position: relative;">
+      <div class="card">
+        <div class="photo"><img src="/static/images/蔚清洋.jpg" alt=""></div>
+        <h1>蔚清洋</h1>
+        <h2>团队成员</h2>
+      </div>
+      <div class="card">
+        <div class="photo"><img src="/static/images/王童.jpg" alt=""></div>
+        <h1>王童</h1>
+        <h2>团队成员</h2>
+      </div>
+      <div class="card">
+        <div class="photo"><img src="/static/images/赵艺.jpg" alt=""></div>
+        <h1>赵艺</h1>
+        <h2>团队成员</h2>
+      </div>
+    </div>
+
+    <div class="members3" style="width: 980px;height: 280px;position: relative;
+            margin: auto;z-index: -1;margin-top: 80px;">
+      <div class="card">
+        <div class="photo"><img src="/static/images/刘家豪.jpg" alt=""></div>
+        <h1>刘家豪</h1>
+        <h2>团队成员</h2>
+      </div>
+      <div class="card">
+        <div class="photo"><img src="/static/images/许照乘.jpg" alt=""></div>
+        <h1>许照乘</h1>
+        <h2>团队成员</h2>
+      </div>
+      <div class="card">
+        <div class="photo"><img src="/static/images/顾振钰.jpg" alt=""></div>
+        <h1>顾振钰</h1>
+        <h2>团队成员</h2>
+      </div>
+    </div>
   </div>
   <!-- 右边正方形 -->
-  <div style="position: relative; margin-top: -220px;text-align: right;">
+  <div style="position: relative; margin-top: -350px;text-align: right;">
     <img src="/static/images/square.png">
   </div>
 
 </div>
 
+
 <!-- 版权 -->
-<div id="div4">
-  <h4 align="center" style="margin-top: 120px;font-size: 20px;">矩阵动力</h4>
+<div id="div4 ">
+  <h4 align="center" style="margin-top: 120px;font-size: 20px; ">矩阵动力</h4>
 </div>
 
-<div id="div5" style="color: rgb(176,176,176); font-size: 13px;width: 298px;margin: 10px auto;">
+<div id="div5 " style="color: rgb(176,176,176); font-size: 13px;width: 298px;margin: 10px auto; ">
   <p>地址：北京市海淀区清华东路35号北京林业大学</p>
   <p>电话：298-63985466</p>
   <p>邮箱：qh13005968844@gmail.com</p>
 </div>
 
 <div id="div6" align="center">
-  <img src="/static/images/weibo.png" alt="">
-  <img src="/static/images/wechat.png" alt="">
-  <img src="/static/images/twitter.png" alt="">
+  <img src="/static/images/weibo.png " alt=" ">
+  <img src="/static/images/wechat.png " alt=" ">
+  <img src="/static/images/twitter.png " alt=" ">
 </div>
 
-<p align="center" style="color: rgb(176,176,176);margin-top: 60px;font-size: 13px;">
+<p align="center" style="color: rgb(176,176,176);margin-top: 60px;font-size: 13px; ">
   ©2022 aone.版权所有.
 </p>
 </body>
+
 </html>

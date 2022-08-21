@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify, session, flash, g
+from decorators import login_required
 from exts import mail, db
 from flask_mail import Message
 from models import EmailCaptchaModel, UserModel, ResetCaptchaModel
@@ -29,7 +30,25 @@ def equipment1_2():
 
 @bp.route("equipment3")
 def equipment3():
-    return render_template("equipment3.html")
+    message_water = "水泵关闭"
+    message_power = "电源关闭"
+    # 经度（东/西）E/W
+    message_submit_car_gps_longitude = f"小车的经度为：{1}"
+    # 纬度（南/北）S/N
+    message_submit_car_gps_latitude = f"小车的纬度为：{1}"
+    message_submit_car_motor_car = f"小车开启情况：{1}"  # 电机启动（车辆 水泵）
+    message_submit_car_motor_pumb = f"水泵开启情况：{1}"
+    message_submit_car_water = f"小车剩余水位信息：{1}"  # 剩余水位信息
+    message_submit_car_distance = f"小车距离前方距离：{1}"  # 前方距离（cm）
+    message_submit_car_pitch = f"云台PItch：{1}"  # 云台PItch
+    message_submit_car_battery = f"云台Yaw：{1}"  # 云台Yaw
+    message_submit_car_temperature = f"温度：{1}"  # 温度
+    message_submit_car_humidity = f"湿度：{1}"  # 湿度
+    message_submit_forward_speed = f"小车前进速度：{1}"
+    message_submit_steering_speed = f"小车转向速度：{1}"
+    return render_template("equipment3.html", message_submit_car_gps_longitude=message_submit_car_gps_longitude,
+                           message_submit_car_gps_latitude=message_submit_car_gps_latitude,
+                           message_submit_car_motor_car=message_submit_car_motor_car)
 
 
 @bp.route("/success")
@@ -69,8 +88,11 @@ def mainindex():
 
 @bp.route("/bounded")
 def bounded():
-
-    return render_template("bounded.html")
+    # 得先判断用户是否已经注册，如果没有登录就跳转到登录页面
+    if hasattr(g, 'user'):
+        return render_template("bounded.html")
+    else:
+        return render_template("login.html", message="请先进行登录")
 
 
 @bp.route("/team")
@@ -118,15 +140,18 @@ def login():
             flash("请输入正确格式的账号或密码")
             return redirect(url_for("user.login"))
 
+
 @bp.route("/mine")
 def mine():
     return render_template("mine.html")
+
 
 @bp.route("/logout")
 def logout():
     # 清除session中的所有数据
     session.clear()
     return redirect(url_for('user.login'))
+
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -214,7 +239,7 @@ def my_mail():
             reset_captcha_model = ResetCaptchaModel(email=email, captcha=captcha)
             db.session.add(reset_captcha_model)
             db.session.commit()
-        print("captcha",captcha)
+        print("captcha", captcha)
         return jsonify({"code": 200})
     else:
         return jsonify({"code": 400, "message": "请先传递邮箱！"})

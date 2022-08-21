@@ -1,74 +1,173 @@
-/* 导航栏 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-header {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 100px;
-    z-index: 10;
-    background: black;
-}
-
-header .navigation {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    left: 150px;
-    top: 15px;
-    margin: 0 auto;
-}
-
-header .navigation li {
-    display: inline-block;
-    list-style: none;
-    margin: 10px 75px;
-}
-
-header .navigation li a {
-    text-decoration: none;
-    color: aliceblue;
-    transition: 0.2 linear;
-    padding: 8px 15px;
-    border-radius: 20px;
-}
-
-header .navigation li a:hover {
-    background-color: rgb(44, 101, 248);
-}
-
-/* 左上角logo图标 */
-#logo {
-    position: absolute;
-    left: 20px;
-    top: 80px;
-}
-
-/* 文字 */
-p {
-    line-height: 30px;
-}
-
-#team {
-    text-align: center;
-    margin-top: 140px;
-    font-size: 43px;
-    letter-spacing: 5px;
-    font-weight: 550;
-}
-
-#laiyuan {
-    text-align: center;
-    font-weight: 544;
-    letter-spacing: 1px;
-    font-size: 14px;
-    margin-top: 30px;
-}
+            /* 导航栏 */
+            
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            header {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 100px;
+                z-index: 10;
+                background: black;
+            }
+            
+            header .navigation {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                left: 150px;
+                top: 15px;
+                margin: 0 auto;
+            }
+            
+            header .navigation li {
+                display: inline-block;
+                list-style: none;
+                margin: 10px 75px;
+            }
+            
+            header .navigation li a {
+                text-decoration: none;
+                color: aliceblue;
+                transition: 0.2 linear;
+                padding: 8px 15px;
+                border-radius: 20px;
+            }
+            
+            header .navigation li a:hover {
+                background-color: rgb(44, 101, 248);
+            }
+            
+            .active {
+                background-color: rgb(44, 101, 248);
+            }
+            /* 左上角logo图标 */
+            
+            #logo {
+                position: absolute;
+                left: 20px;
+                top: 80px;
+            }
+            /* 文字 */
+            
+            p {
+                line-height: 30px;
+            }
+            
+            .members1 {
+                height: 50vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: white;
+            }
+            
+            .members2 {
+                height: 2vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: white;
+            }
+            
+            .members3 {
+                height: 50vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: white;
+            }
+            
+            .card {
+                position: relative;
+                width: 180px;
+                height: 180px;
+                margin: 20px;
+                background-color: white;
+                border-radius: 20px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: black;
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+                flex-shrink: 0;
+                margin-left: 50px;
+            }
+            
+            .card .photo img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            .card .photo {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 0%;
+                overflow: hidden;
+                transition: 0.5s;
+            }
+            
+            .card:hover .photo {
+                top: 10px;
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            }
+            
+            .card h1 {
+                position: absolute;
+                top: 130px;
+                transition: 0.5s;
+                font-size: 30px;
+            }
+            
+            .card:hover h1 {
+                top: 30px;
+            }
+            
+            .card h2 {
+                margin-top: 130px;
+                width: 80%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                font-size: 20px;
+                text-align: center;
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+            }
+            
+            .card p {
+                width: 9%;
+                text-indent: 32px;
+                font-size: 16px;
+                margin-bottom: 15px;
+                line-height: 30px;
+            }
+            
+            #team {
+                text-align: center;
+                margin-top: 50px;
+                font-size: 60px;
+                letter-spacing: 7px;
+                font-weight: 550;
+            }
+            
+            #laiyuan {
+                text-align: center;
+                font-weight: 544;
+                letter-spacing: 1px;
+                font-size: 14px;
+                margin-top: 50px;
+            }
