@@ -11,6 +11,8 @@ from blueprints.forms import RegisterForm, LoginForm, ResetForm
 from werkzeug.security import generate_password_hash, check_password_hash
 
 bp = Blueprint("user", __name__, url_prefix="/user")
+global mforward
+mforward = 0
 
 
 @bp.route("/equipment")
@@ -28,7 +30,35 @@ def equipment1_2():
     return render_template("equipment1_2.html")
 
 
-@bp.route("equipment3")
+@bp.route("/forward", methods=['POST'])
+def forward():
+    mforward = 1
+    print("前进", mforward)
+    return jsonify({"code": 200})
+
+
+@bp.route("/left", methods=['POST'])
+def left():
+    mleft = 1
+    print("向左", mleft)
+    return jsonify({"code": 200})
+
+
+@bp.route("/backward", methods=['POST'])
+def backward():
+    mbackward = 1
+    print("后退", mbackward)
+    return jsonify({"code": 200})
+
+
+@bp.route("/right", methods=['POST'])
+def right():
+    mright = 1
+    print("向右", mright)
+    return jsonify({"code": 200})
+
+
+@bp.route("equipment3", methods=['GET', 'POST'])
 def equipment3():
     message_water = "水泵关闭"
     message_power = "电源关闭"
@@ -48,7 +78,16 @@ def equipment3():
     message_submit_steering_speed = f"小车转向速度：{1}"
     return render_template("equipment3.html", message_submit_car_gps_longitude=message_submit_car_gps_longitude,
                            message_submit_car_gps_latitude=message_submit_car_gps_latitude,
-                           message_submit_car_motor_car=message_submit_car_motor_car)
+                           message_submit_car_motor_car=message_submit_car_motor_car,
+                           message_submit_car_motor_pumb=message_submit_car_motor_pumb,
+                           message_submit_car_water=message_submit_car_water,
+                           message_submit_car_distance=message_submit_car_distance,
+                           message_submit_car_pitch=message_submit_car_pitch,
+                           message_submit_car_battery=message_submit_car_battery,
+                           message_submit_car_temperature=message_submit_car_temperature,
+                           message_submit_car_humidity=message_submit_car_humidity,
+                           message_submit_forward_speed=message_submit_forward_speed,
+                           message_submit_steering_speed=message_submit_steering_speed)
 
 
 @bp.route("/success")

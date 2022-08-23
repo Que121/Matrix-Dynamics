@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>设备界面3</title>
   <link rel="stylesheet" href="/static/bootstrap/devicesbounded4/mystyle2.css">
+  <script src="{{ url_for('static',filename='jquery//jquery.3.6.min.js') }}"></script>
 </head>
 
 <script type="text/javascript">
@@ -34,18 +35,34 @@
 
     function W() {
         alert("前进")
+        $.ajax({
+            url:"/user/forward",
+            method:'POST'
+        })
     }
 
     function A() {
         alert("向左")
+        $.ajax({
+            url:"/user/left",
+            method:'POST'
+        })
     }
 
     function S() {
         alert("后退")
+        $.ajax({
+            url:"/user/backward",
+            method:'POST'
+        })
     }
 
     function D() {
         alert("向右")
+        $.ajax({
+            url:"/user/right",
+            method:'POST'
+        })
     }
 
 </script>
@@ -90,17 +107,30 @@
     </button>
     <div id="area" style="border: 1px solid;margin:-380px auto 0px 495px;position: absolute;
             width: 280px;height: 380px;">
+      <div style="margin-top: 30px">{{ message_submit_car_gps_longitude }}
+        <br>{{ message_submit_car_gps_latitude }}
+        <br>{{ message_submit_car_motor_car }}
+        <br>{{ message_submit_car_motor_pumb }}
+        <br>{{ message_submit_car_water }}
+        <br>{{ message_submit_car_distance }}
+        <br>{{ message_submit_car_pitch }}
+        <br>{{ message_submit_car_battery }}
+        <br>{{ message_submit_car_temperature }}
+        <br>{{ message_submit_car_humidity }}
+        <br>{{ message_submit_forward_speed }}
+        <br>{{ message_submit_steering_speed }}</div>
+
     </div>
-    <button class="move" style="position: absolute;margin:-330px 100px 0px 390px" onclick="W()">
+    <button class="move" style="position: absolute;margin:-330px 100px 0px 390px" onclick="W()" id="forward">
       <img src="/static/images/up.png" alt="" class="tupian">
     </button>
-    <button class="move" style="position: absolute;margin:-250px 100px 0px 310px" onclick="A()">
+    <button class="move" style="position: absolute;margin:-250px 100px 0px 310px" onclick="A()" id="left">
       <img src="/static/images/left.png" alt="" class="tupian">
     </button>
-    <button class="move" style="position: absolute;margin:-250px 100px 0px 475px;z-index: 10;" onclick="D()">
+    <button class="move" style="position: absolute;margin:-250px 100px 0px 475px;z-index: 10;" onclick="D()" id="right">
       <img src="/static/images/right.png" alt="" class="tupian">
     </button>
-    <button class="move" style="position: absolute;margin:-174px 100px 0px 395px" onclick="S()">
+    <button class="move" style="position: absolute;margin:-174px 100px 0px 395px" onclick="S()" id="backward">
       <img src="/static/images/down.png" alt="" class="tupian">
     </button>
     <button class="shui" style="position: absolute;margin:-265px 100px 0px 384px">浇水</button>
