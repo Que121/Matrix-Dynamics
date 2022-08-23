@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设备界面3</title>
+  <link rel="stylesheet" href="/static/bootstrap/devicesbounded4/mystyle2.css">
+</head>
+
+<script type="text/javascript">
+    function init() {
+        //页面键盘点击时触发
+        document.onkeydown = showKeyDown;
+    }
+
+    function showKeyDown(evt) {
+        evt = (evt) ? evt : window.event;
+
+
+        if (evt.keyCode == 87) {
+            W();
+        }
+        if (evt.keyCode == 65) {
+            A();
+        }
+        if (evt.keyCode == 83) {
+            S();
+        }
+        if (evt.keyCode == 68) {
+            D();
+        }
+    }
+
+    function W() {
+        alert("前进")
+    }
+
+    function A() {
+        alert("向左")
+    }
+
+    function S() {
+        alert("后退")
+    }
+
+    function D() {
+        alert("向右")
+    }
+
+</script>
+
+<body onload="init()">
+<!-- 导航栏 -->
+<header>
+  <ul class="navigation">
+    <li><a href="{{ url_for('user.index') }}">关于</a></li>
+    <li><a href="{{ url_for('user.mainindex') }}">首页</a></li>
+    <li><a href="{{ url_for('user.team') }}">团队</a></li>
+    <li><a href="{{ url_for('user.purchase') }}">购买</a></li>
+    {% if user %}
+      <Li><a href="{{ url_for('user.mine') }}">{{ user.username }}</a></Li>
+    {% else %}
+      <li><a href="{{ url_for('user.register') }}">注册</a></li>
+    {% endif %}
+  </ul>
+</header>
+
+<div style="margin: 0 auto;width:1250px">
+  <!-- 左上角logo图标 -->
+  <img id="logo" src="/static/images/logo.png" style="z-index:2;position: relative;text-align: left;"> <br>
+  <!-- 左上角的直角三角形 -->
+  <div>
+    <img src="/static/images/Triangle_left.png" id="Triangle_left"
+         style="position: relative;text-align: left;margin-top: -76px;width: 150px;height: 400px;">
+  </div>
+  <!-- 右下角的直角三角形 -->
+</div>
+
+<div align="center" style="width: 1000px;margin:-390px auto 0 auto;;">
+  <!-- 图传提示文字 -->
+  <p id="tip2">*默认为wasd行走，鼠标控制视角，左键浇水</p>
+  <!-- 图传区域 -->
+  <div>
+    <div id="area" style="border: 1px solid;margin-left: -560px;
+            width: 430px;height: 430px;">
+    </div>
+    <button class="shuaxin">
+      点击此处进行刷新
+    </button>
+    <div id="area" style="border: 1px solid;margin:-380px auto 0px 495px;position: absolute;
+            width: 280px;height: 380px;">
+          <form action="" methods=['GET', 'POST'] style="border: 1px solid;margin:-380px auto 0px 495px;position: absolute;
+          width: 280px;height: 380px;">
+            <br><br>{{message_water}}
+            <br><br>{{message_power}}
+            <br><br>{{message_submit_car_gps_longitude}}
+            <br><br>{{message_submit_car_gps_latitude}}
+            <br><br>{{message_submit_car_motor_car}}
+            <br><br>{{message_submit_car_motor_pumb}}
+            <br><br>{{message_submit_car_water}}
+            <br><br>{{message_submit_car_distance}}
+            <br><br>{{message_submit_car_pitch}}
+            <br><br>{{message_submit_car_battery}}
+            <br><br>{{message_submit_car_temperature}}
+            <br><br>{{message_submit_car_humidity}}
+            <br><br>{{message_submit_forward_speed}}
+            <br><br>{{message_submit_steering_speed}}
+          </form>
+    </div>
+    <button class="move" style="position: absolute;margin:-330px 100px 0px 390px" onclick="W()" value="bt_w"name="bt_w">
+      <img src="/static/images/up.png" alt="" class="tupian">
+    </button>
+    <button class="move" style="position: absolute;margin:-250px 100px 0px 310px" onclick="A()" value="bt_a"name="bt_a">
+      <img src="/static/images/left.png" alt="" class="tupian">
+    </button>
+    <button class="move" style="position: absolute;margin:-250px 100px 0px 475px;z-index: 10;" onclick="D()" value="bt_d"name="bt_d">
+      <img src="/static/images/right.png" alt="" class="tupian">
+    </button>
+    <button class="move" style="position: absolute;margin:-174px 100px 0px 395px" onclick="S()"value="bt_s" name="bt_s">
+      <img src="/static/images/down.png" alt="" class="tupian">
+    </button>
+    <button class="shui" style="position: absolute;margin:-265px 100px 0px 384px"value ="bt_water" name="bt_water">浇水</button>
+  </div>
+</div>
+
+<!-- 返回到已绑定设备界面 按钮 -->
+<br><br>
+<div align="center">
+  <a href="{{ url_for('user.bounded') }}">
+    <button class="exittobounded1" type="exit"><strong>返回</strong></button>
+  </a>
+</div>
+<div style="margin: 0 auto;width:1250px;text-align: right;">
+  <img src="/static/images/Triangle_right.png" alt="" id="Triangle_right"
+       style="position: relative;top: -370px;width: 150px;height: 400px;">
+</div>
+
+<!-- 版权 -->
+<div id="div4">
+  <h4 align="center" style="margin-top: -250px;font-size: 20px;">矩阵动力</h4>
+</div>
+
+<div id="div5" style="color: rgb(176,176,176); font-size: 13px;width: 298px;margin: 10px auto;">
+  <p>地址：北京市海淀区清华东路35号北京林业大学</p>
+  <p>电话：298-63985466</p>
+  <p>邮箱：qh13005968844@gmail.com</p>
+</div>
+
+<div id="div6" align="center">
+  <img src="/static/images/weibo.png" alt="">
+  <img src="/static/images/wechat.png" alt="">
+  <img src="/static/images/twitter.png" alt="">
+</div>
+
+<p align="center" style="color: rgb(176,176,176);margin-top: 60px;font-size: 13px;">
+  ©2022 aone.版权所有.
+</p>
+</body>
+</html>

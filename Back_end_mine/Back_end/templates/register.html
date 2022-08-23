@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}注册界面{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="/static/bootstrap/register/styleregister_1.css">
+  <script src="{{ url_for('static',filename='jquery//jquery.3.6.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='js/register.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+  <img class="logo1" src="/static/images/logo1.png">
+  <img class="logo2" src="/static/images/logo2.png">
+  <div class="logon">
+    <div class="row mt-4">
+      <dic class="col"></dic>
+      <dic class="col">
+        <!--要先说明method否则会默认为GET方法-->
+        <form method="POST" action="{{ url_for('user.register') }}">
+
+          <div class="form-group">
+            <input type="text" class="ID" name="username" placeholder="请输入用户名">
+            <button class="nicheng" type="nicheng" name="nicheng">昵称可用</button>
+            <br>
+          </div>
+
+          <div class="form-group">
+            <input type="email" class="ID" id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+                   placeholder="输入您的邮箱">
+
+          </div>
+
+          <div class="form-group">
+            <div class="input-group">
+              <input class="exam" type="text" name="captcha" placeholder="输入验证码">
+              <button type="button" name="getexam" class="btn btn-outline-secondary" id="captcha-btn" style=" margin-top: 10px;
+    width: 100px;
+    height: 50px;
+    background-color: rgba(7, 73, 255, 0.832);
+    color: aliceblue;
+    border-radius: 5px;
+    border:none;
+position:static">获取验证码
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input type="password" class="password" id="exampleInputPassword1" name="password" placeholder="请输入密码">
+          </div>
+
+
+          <div class="form-group">
+            <input type="password" class="repassword" name="password_confirm" placeholder="再次输入密码">
+          </div>
+
+          {% for message in get_flashed_messages() %}
+              <div class="text_danger" align="center">
+                <div >{{ message }}</div>
+              </div>
+            {% endfor %}
+
+
+          <div>
+            <button type="regist" class="btn btn-primary btn-block" style="margin-top: 20px;
+    width: 300px;
+    height: 50px;
+    /* border-radius: 5%; */
+    background-color: rgba(7, 73, 255, 0.832);
+    color: aliceblue;
+    border: none;
+    margin-left: 100px;
+    border-radius: 30px 30px 30px 30px;">确认注册
+            </button>
+          </div>
+    </div>
+
+  </div>
+
+
+
+
+
+  </form>
+  </dic>
+  <dic class="col"></dic>
+  </div>
+
+
+  </div>
+  <div class="actor">
+    <p align="center" style="font-size: 10px;"><strong>矩阵动力</strong></p>
+    <p style="font-size: 5px;">地址：北京市海淀区清华东路35号</p>
+    <p style="font-size: 5px;">电话： </p>
+    <p style="font-size: 5px;">邮箱： </p>
+  </div>
+  <div class="weibo"><a href="#"><img src="/static/images/weibo.png" width="50px" height="50px"></a></div>
+  <a href="#" class="weixin"><img src="/static/images/weixin.png" width="50px" height="50px"></a>
+  <a href="#" class="feishu"><img src="/static/images/feishu.png" width="50px" height="50px"></a>
+  <div class="down" style="font-size: 5px;"><p>@2022.矩阵动力版权所有</p></div>
+{% endblock %}

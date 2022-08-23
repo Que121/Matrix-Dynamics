@@ -1,0 +1,74 @@
+/* 导航栏 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 100px;
+    z-index: 10;
+    background: black;
+}
+
+header .navigation {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    left: 150px;
+    top: 15px;
+    margin: 0 auto;
+}
+
+header .navigation li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 75px;
+}
+
+header .navigation li a {
+    text-decoration: none;
+    color: aliceblue;
+    transition: 0.2 linear;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+header .navigation li a:hover {
+    background-color: rgb(44, 101, 248);
+}
+
+/* 左上角logo图标 */
+#logo {
+    position: absolute;
+    left: 20px;
+    top: 80px;
+}
+
+/* 文字 */
+p {
+    line-height: 30px;
+}
+
+#team {
+    text-align: center;
+    margin-top: 140px;
+    font-size: 43px;
+    letter-spacing: 5px;
+    font-weight: 550;
+}
+
+#laiyuan {
+    text-align: center;
+    font-weight: 544;
+    letter-spacing: 1px;
+    font-size: 14px;
+    margin-top: 30px;
+}

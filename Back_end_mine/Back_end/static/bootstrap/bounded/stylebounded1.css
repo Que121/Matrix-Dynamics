@@ -1,0 +1,167 @@
+.header {
+    width: 100%;
+    height: 8vh;
+    padding: 0 10%;
+    background: black;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 200px;
+    position: relative;
+    z-index: 100;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 5px 50px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: aliceblue;
+    transition: 0.2 linear;
+}
+
+nav ul li a:hover {
+    color: blue;
+}
+
+body {
+    background-color: white;
+    background-size: 100% auto;
+}
+
+.bounded1 {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 800px;
+    transform: translate(-50%, -50%);
+    padding: 600px, 600px;
+    display: flex;
+
+
+}
+
+.logo1 {
+
+    position: absolute;
+    margin-left: 50px;
+    margin-top: 1%;
+}
+
+.leftblue {
+    margin-left: 1px;
+    margin-top: 1px;
+
+}
+
+.rightblue {
+    position: absolute;
+    margin-left: 72%;
+    margin-top: 30%;
+}
+
+#a {
+    width: 150px;
+    height: 150px;
+    margin-left: 100px;
+    margin-top: 150px;
+    background-color: white;
+    border-color: rgb(207, 204, 204);
+    border-width: 2px;
+    border-style: solid;
+}
+
+#b {
+    width: 150px;
+    height: 150px;
+    margin-left: 50px;
+    margin-top: 150px;
+    background-color: white;
+    border-color: rgb(207, 204, 204);
+    border-width: 2px;
+    border-style: solid;
+}
+
+#c {
+    width: 150px;
+    height: 150px;
+    margin-left: 50px;
+    margin-top: 150px;
+    background-color: white;
+    border-color: rgb(207, 204, 204);
+    border-width: 2px;
+    border-style: solid;
+}
+
+#d {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    margin-left: 100px;
+    margin-top: 350px;
+    background-color: white;
+    border-color: rgb(207, 204, 204);
+    border-width: 2px;
+    border-style: solid;
+}
+
+#e {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    margin-left: 300px;
+    margin-top: 350px;
+    background-color: white;
+    border-color: rgb(207, 204, 204);
+    border-width: 2px;
+    border-style: solid;
+}
+
+.actor {
+    position: absolute;
+    top: 1200px;
+    left: 44%;
+    height: 100px;
+    z-index: 1;
+    color: gray;
+}
+
+.weibo {
+    position: absolute;
+    border: none;
+    top: 1320px;
+    left: 44%;
+    z-index: 1;
+
+}
+
+.weixin {
+    position: absolute;
+    border: none;
+    top: 1320px;
+    left: 48%;
+    z-index: 1;
+}
+
+.feishu {
+    position: absolute;
+    border: none;
+    top: 1320px;
+    left: 52%;
+    z-index: 1;
+}
+
+.down {
+    position: absolute;
+    top: 1380px;
+    left: 46%;
+    z-index: 1;
+    color: gray;
+}
