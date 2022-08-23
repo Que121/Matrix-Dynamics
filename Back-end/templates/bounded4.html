@@ -1,47 +1,89 @@
-{% extends "base.html" %}
-
-{% block title %}关联设备{% endblock %}
-
-{% block head %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>device bounded1</title>
   <link rel="stylesheet" href="/static/bootstrap/bounded/stylebounded1.css">
   <style type="text/css">a {
     text-decoration: none
   }</style>
-{% endblock %}
+</head>
+<body>
+<header>
+  <ul class="navigation">
+    <li><a href="{{ url_for('user.index') }}">关于</a></li>
+    <li><a href="{{ url_for('user.bounded') }}">设备</a></li>
+    <li><a href="{{ url_for('user.mainindex') }}">首页</a></li>
+    <li><a href="{{ url_for('user.team') }}">团队</a></li>
+    <li><a href="{{ url_for('user.purchase') }}">购买</a></li>
+    {% if user %}
+      <Li><a href="{{ url_for('user.mine') }}">{{ user.username }}</a></Li>
+    {% else %}
+      <li><a href="{{ url_for('user.register') }}">注册</a></li>
+    {% endif %}
+  </ul>
+</header>
 
-{% block body %}
+<div style="margin: 0 auto;width:1250px">
+  <!-- 左上角logo图标 -->
+  <img id="logo1" src="/static/images/logo1.jpg" width="130px" height="130px"
+       style="position: relative;text-align: left;">
+</div>
 
-  <img class="logo1" src="/static/images/logo1.png">
-  <div>
-    <h1 align="center" style="margin-top: 100px; font-size: 50px;">已绑定设备</h1>
+<div>
+  <h1 align="center" style="margin-top: 100px; font-size: 50px;">已绑定设备</h1>
+</div>
+<br>
+
+<div style="margin: 0 auto;width:1250px">
+  <!-- 左蓝 -->
+  <img id="leftblue" src="/static/images/leftblue.png" style="position: relative;text-align: left;">
+</div>
+
+
+<div class="bounded1" style="position:relative;margin: 0 auto;">
+  <br>
+  <div id="a"><a href="{{ url_for('user.equipment3') }}" class="device1"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备1</a>
+  </div>
+  <div id="b"><a href="{{ url_for('user.equipment3') }}" class="device2"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备2</a>
+  </div>
+  <div id="b"><a href="{{ url_for('user.equipment3') }}" class="device3"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备3</a>
   </div>
   <br>
-  <div><img class="leftblue" src="/static/images/leftblue.png" width: 10px;
-            height: 10px;>
-    <img class="rightblue" src="/static/images/rightblue.png"></div>
-
-  <div class="bounded1">
-
-    <br>
-    <div id="a"><a href="{{ url_for('user.equipment3') }}" class="device1"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备1</a></div>
-    <div id="b"><a href="{{ url_for('user.equipment3') }}" class="device2"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备2</a></div>
-    <div id="b"><a href="{{ url_for('user.equipment3') }}" class="device3"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备3</a></div>
-    <br>
-    <div id="d"><a href="{{ url_for('user.equipment3') }}" class="device4"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备4</a></div>
-    <div id="e"><a href="{{ url_for("user.bounded") }}" class="+"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;重置</a></div>
-
-
+  <div id="d"><a href="{{ url_for('user.equipment3') }}" class="device4"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;设备4</a>
   </div>
-  <div class="actor">
-    <p align="center"><strong>矩阵动力</strong></p>
-    <p>地址：北京市海淀区清华东路35号</p>
-    <p>电话： </p>
-    <p>邮箱： </p>
+  <div id="e"><a href="{{ url_for("user.bounded") }}" class="+"><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;重置</a>
   </div>
-  <div class="weibo"><a href="#"><img src="/static/images/weibo.png" width="50px" height="50px"></a></div>
-  <a href="#" class="weixin"><img src="/static/images/weixin.png" width="50px" height="50px"></a>
-  <a href="#" class="feishu"><img src="/static/images/feishu.png" width="50px" height="50px"></a>
-  <div class="down"><p>@2022.矩阵动力版权所有</p></div>
 
-{% endblock %}
+
+</div>
+
+<div style="margin: 0 auto;width:1250px">
+  <!-- 右侧logo图标 -->
+  <img id="rightblue" src="/static/images/rightblue.png" style="position: relative;text-align: right;">
+</div>
+
+<div id="div4">
+  <h4 align="center" style="margin-top: -650px;font-size: 13px;">矩阵动力</h4>
+</div>
+
+<div id="div5" style="color: rgb(176,176,176); font-size: 13px;width: 298px;margin: 10px auto;">
+  <p>地址：北京市海淀区清华东路35号北京林业大学</p>
+  <p>电话：298-63985466</p>
+  <p>邮箱：qh13005968844@gmail.com</p>
+</div>
+
+<div id="div6" align="center">
+  <img src="/static/images/weibo.png" width="50px" height="50px" alt="">
+  <img src="/static/images/weixin.png" width="50px" height="50px" alt="">
+  <img src="/static/images/feishu.png" width="50px" height="50px" alt="">
+</div>
+
+<p align="center" style="color: rgb(176,176,176);margin-top: 10px;font-size: 13px;">
+  ©2022 aone.版权所有.
+</p>
+
+</body>
+</html>

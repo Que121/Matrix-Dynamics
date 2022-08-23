@@ -1,41 +1,70 @@
-{% extends "base.html" %}
-
-{% block title %}关于{% endblock %}
-
-{% block head %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于</title>
   <link rel="stylesheet" href="/static/bootstrap/index/styleabout.css">
   <style type="text/css">a {
     text-decoration: none
   }</style>
+</head>
+<body>
+<header>
+  <ul class="navigation">
+    <li><a href="{{ url_for('user.index') }}">关于</a></li>
+    <li><a href="{{ url_for('user.bounded') }}">设备</a></li>
+    <li><a href="{{ url_for('user.mainindex') }}">首页</a></li>
+    <li><a href="{{ url_for('user.team') }}">团队</a></li>
+    <li><a href="{{ url_for('user.purchase') }}">购买</a></li>
+    {% if user %}
+      <Li><a href="{{ url_for('user.mine') }}">{{ user.username }}</a></Li>
+    {% else %}
+      <li><a href="{{ url_for('user.register') }}">注册</a></li>
+    {% endif %}
+  </ul>
+</header>
 
-{% endblock %}
+<div style="margin: 0 auto;width:1250px">
+  <!-- 左上角logo图标 -->
+  <img id="logo1" src="/static/images/logo1.jpg" width="130px" height="130px"
+       style="position: relative;text-align: left;">
+</div>
+<div>
+  <h1 align="center" style="margin-top: 80px;font-size: 50px;">我们开源</h1>
+  <p align="center" style="margin-top: 10px;">包括机械、电控、算法</p>
+</div>
 
-{% block body %}
-  <img class="logo1" src="/static/images/logo1.png">
-  <div id="right"></div>
-  <div>
-
-    <h1 align="center" style="margin-top: 80px;font-size: 50px;">我们开源</h1>
-    <p align="center" style="margin-top: 10px;">包括机械、电控、算法</p>
-  </div>
-  <div id="left"></div>
-
-  <div id="mid"></div>
-  <p align="center" class="connect"><a
-          href="https://toscode.gitee.com/que-haohua_admin/matrix-dynamics.git"
-          style="font-size: 30px;">开源链接</a></p>
+<!-- 右侧蓝色正方形 -->
+<div id="right" style="position: relative;text-align: right; margin: 0 auto;"></div>
 
 
-  <div class="actor">
-    <p align="center" style="font-size: 10px;"><strong>矩阵动力</strong></p>
-    <p style="font-size: 10px;">地址：北京市海淀区清华东路35号</p>
-    <p style="font-size: 10px;">电话：xxxxxxxxxx</p>
-    <p style="font-size: 10px;">邮箱：xxxxxxxxxx@xxx.com</p>
-  </div>
+<!-- 左侧和中间蓝色、白色框 -->
+<div id="left" style="position: relative; margin: 0 auto;"></div>
+<div id="mid" style="position: relative; margin: 0 auto;"></div>
 
+<p align="center" class="connect"><a href="#" style="font-size: 30px; margin: 0 auto;">开源链接</a></p>
 
-  <div class="weibo"><a href="#"><img src="/static/images/weibo.png" width="50px" height="50px"></a></div>
-  <a href="#" class="weixin"><img src="/static/images/weixin.png" width="50px" height="50px"></a>
-  <a href="#" class="feishu"><img src="/static/images/feishu.png" width="50px" height="50px"></a>
-  <div class="down" style="font-size: 5px;"><p align="center">@2022.矩阵动力版权所有</p></div>
-{% endblock %}
+<div id="div4">
+  <h4 align="center" style="margin-top: 370px;font-size: 13px;">矩阵动力</h4>
+</div>
+
+<div id="div5" style="color: rgb(176,176,176); font-size: 13px;width: 298px;margin: 10px auto;">
+  <p>地址：北京市海淀区清华东路35号北京林业大学</p>
+  <p>电话：298-63985466</p>
+  <p>邮箱：qh13005968844@gmail.com</p>
+</div>
+
+<div id="div6" align="center">
+  <img src="/static/images/weibo.png" width="50px" height="50px" alt="">
+  <img src="/static/images/weixin.png" width="50px" height="50px" alt="">
+  <img src="/static/images/feishu.png" width="50px" height="50px" alt="">
+</div>
+
+<p align="center" style="color: rgb(176,176,176);margin-top: 10px;font-size: 13px;">
+  ©2022 aone.版权所有.
+</p>
+
+</body>
+</html>
