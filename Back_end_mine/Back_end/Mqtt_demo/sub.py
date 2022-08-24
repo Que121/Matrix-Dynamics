@@ -154,7 +154,13 @@ def decode():
 
 
 def sub_run():
+    
     client = connect_mqtt()
     subscribe(client)
     client.loop_forever()
     
+
+
+if __name__ == '__main__':
+    sub_run() # 连接服务器
+    # decode() # 测试

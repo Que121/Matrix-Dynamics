@@ -65,7 +65,12 @@ def publish(client):
 
 
 def pub_run():
+    
     client = connect_mqtt()
     client.loop_start()
     publish(client)
     
+
+
+# if __name__ == '__main__':
+#     pub_run()

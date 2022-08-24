@@ -21,6 +21,7 @@ from Mqtt_demo.car_message import *
 bp = Blueprint("user", __name__, url_prefix="/user")
 
 
+
 @bp.route("/equipment")
 def equipment():
     return render_template("equipment.html")
@@ -35,71 +36,116 @@ def equipment1_1():
 def equipment1_2():
     return render_template("equipment1_2.html")
 
+#键盘操作函数
 
+# bt_a=0
+# bt_s=0
+# bt_d=0
+# bt_w=0
+# water_pump =0
+# power_on =0
+# bt_submit =0
+
+@bp.route("/right",methods=['POST'])
+def right():
+    global bt_d
+    bt_d=1
+    print(bt_d)
+    return jsonify({"code":200})
+
+@bp.route("/left",methods=['POST'])
+def left():
+    global bt_a
+    bt_a=1
+    print(f"前进{bt_a}")
+    return jsonify({"code":200})
+@bp.route("/mforward",methods=['POST'])
+def mforward():
+    global bt_w
+    bt_w=1
+    print(bt_w)
+    return jsonify({"code":200})
+@bp.route("/backward",methods=['POST'])
+def backward():
+    global bt_s
+    bt_s=1
+    print(bt_s)
+    return jsonify({"code":200})
+@bp.route("/water_pumb",methods=['POST'])
+def water():
+    global water_pump,power_on
+    water_pump =0
+    power_on =0
+    water_pump= not water_pump
+    power_on= not power_on
+    print(water_pump)
+    print(power_on)
+    return jsonify({"code":200})
+@bp.route("/submit",methods=['POST'])
+def submit():
+    global bt_submit
+    bt_submit=1
+    print(bt_submit)
+    return jsonify({"code":200})
+
+#电机水源操作函数
 @bp.route("/equipment3", methods=['GET', 'POST'])
 def equipment3():
     global car_header, car_gps_longitude, car_gps_latitude, \
         car_gps_GTime, car_motor, car_water, car_distance,  \
         car_pitch, car_yaw, car_battery, car_temperature,  \
         car_humidity, car_end, car_errorcode
-    global forward_speed, steering_speed, power_on, water_pump, falg_car_pub
-
-    # 创建进程锁
+    global forward_speed,steering_speed,power_on,water_pump,flag_car_pub
+    global message_water, message_power
+    message_water = "水泵关闭"
+    message_power = "电源关闭"
+    forward_speed = steering_speed =0
+    global bt_w, bt_s, bt_a, bt_d
+    #创建进程锁
     # global lock1,lock2
     # lock1= threading.Lock()
     # lock2 = threading.Lock()
-    while (1):
+    thread_sub =threading.Thread(target=sub_run)
+    thread_sub.start()
+    thread_pub =threading.Thread(target=pub_run)
+    thread_pub.start()
+    while(1):
         time.sleep(2)
-
+        
         if request.method == 'GET':
+        
             return render_template("equipment3.html")
         else:
-
-            global bt_water, bt_power
-            # 获取控制电源和水泵开关的按钮名称
-            bt_water = request.values.get("bt_water")
-            # 网页页面缺一个按钮
-            bt_power = request.values.get("power")
-            # 获取控制小车被点击的按钮并且建立与按钮间的联系
-            global bt_a, bt_s, bt_d, bt_w
-            bt_a = request.values.get("bt_a")
-            bt_s = request.values.get("bt_s")
-            bt_d = request.values.get("bt_d")
-            bt_w = request.values.get("bt_w")
-
-            global bt_up, bt_right, bt_down, bt_left
-            bt_up = request.values.get("bt_a")
-            bt_right = request.values.get("bt_d")
-            bt_down = request.values.get("bt_s")
-            bt_left = request.values.get("bt_a")
-            # 对键盘输入的wasd进行处理，并且能做到控制改变小车速度，返回值为小车forward_speed,steering_speed
-            function_on_speed(bt_w, bt_s, bt_up, bt_down,
-                              bt_a, bt_d, bt_right, bt_left)
-
+            #
+            
+            
+            # 对键盘输入的wasd进行处理，并且能做到控制改变小车速度，返回值为小车forward_speed,steering_speed 
+            function_on_speed(bt_w, bt_s, bt_a, bt_d,forward_speed,steering_speed)
+            
             # 根据按钮改变水泵与电机状态
-            if bt_water == 'watervalue':
-                if water_pump == 1:
-                    water_pump = 0
-                    message_water = "水泵关闭"
-                    return render_template("equipment3.html", message_water)
-                elif water_pump == 0:
-                    water_pump = 1
-                    message_water = "水泵开启"
-                    return render_template("equipment3.html", message_water)
+            if water_pump == 1:
+                water_pump = 0
+                message_water = "水泵关闭"
+                return render_template("equipment3.html", message_water=message_water)
+            elif water_pump == 0:
+                water_pump = 1
+                message_water = "水泵开启"
+                return render_template("equipment3.html", message_water=message_water)
 
-            if bt_power == 'powervalue':
-                if power_on == 1:
-                    power_on = 0
-                    message_water = "电机关闭"
-                    return render_template("equipment3.html", message_power)
-                elif power_on == 0:
-                    power_on = 1
-                    message_water = "电机开启"
-                    return render_template("equipment3.html", message_power)
-
-            # 返回操纵电机后，电机的数值
+            
+            if power_on == 1:
+                power_on = 0
+                message_water = "电机关闭"
+                return render_template("equipment3.html", message_power)
+            elif power_on == 0:
+                power_on = 1
+                message_water = "电机开启"
+                return render_template("equipment3.html", message_power)
+                #
+            #返回操纵电机后，电机的数值
             car_control()
 
+        
             # 重新拆分电机以及水泵的状态
             if car_motor == "OFF_OFF":
                 car_motor_car = "OFF"
@@ -113,10 +159,12 @@ def equipment3():
             else:
                 car_motor_car = "ON"
                 car_motor_pumb = "ON"
+            
+            
 
             # 在右侧中显示输出小车当前状态
-            bt_submit = request.values.get("")
-            if bt_submit == '':
+            
+            if bt_submit == 1:
                 # 经度（东/西）E/W
                 message_submit_car_gps_longitude = f"小车的经度为：{car_gps_longitude}"
                 # 纬度（南/北）S/N
@@ -133,18 +181,16 @@ def equipment3():
                 message_submit_car_humidity = f"湿度：{car_humidity}"  # 湿度
                 message_submit_forward_speed = f"小车前进速度：{forward_speed}"
                 message_submit_steering_speed = f"小车转向速度：{steering_speed }"
-                return render_template("equipment3.html", message_submit_car_gps_longitude, message_submit_car_gps_latitude,
-                                       message_submit_car_motor_car, message_submit_car_water, message_submit_car_distance, message_submit_car_pitch,
-                                       message_submit_car_battery, message_submit_car_temperature, message_submit_car_humidity,
-                                       message_submit_forward_speed, message_submit_steering_speed, message_submit_car_motor_pumb,
-                                       message_power, message_water)
-
-            # thread_sub =threading.Thread(target=sub_run)
-            # thread_sub.start()
-            # thread_pub =threading.Thread(target=pub_run)
-            # thread_pub.start()
-
-
+                return render_template("equipment3.html", message_submit_car_gps_longitude=message_submit_car_gps_longitude, message_submit_car_gps_latitude=message_submit_car_gps_latitude,
+                                   message_submit_car_motor_car=message_submit_car_motor_car, message_submit_car_water=message_submit_car_water, message_submit_car_distance=message_submit_car_distance, message_submit_car_pitch=message_submit_car_pitch,
+                                   message_submit_car_battery=message_submit_car_battery, message_submit_car_temperature=message_submit_car_temperature, message_submit_car_humidity=message_submit_car_humidity,
+                                   message_submit_forward_speed=message_submit_forward_speed, message_submit_steering_speed=message_submit_steering_speed, message_submit_car_motor_pumb=message_submit_car_motor_pumb,
+                                   )
+            
+            
+            
+            
+        
 @bp.route("/success")
 def success():
     return render_template("success.html")

@@ -21,3 +21,4 @@ MAIL_USERNAME = "1409182558@qq.com"
 MAIL_PASSWORD = "bwaoppfmvtqwgege"
 MAIL_DEFAULT_SENDER = "1409182558@qq.com"
 
+
