@@ -137,6 +137,19 @@ p {
     background-color: rgb(44,101,248);
 }
 
+.auto {
+    width: 100px;
+    height: 30px;
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.auto:active {
+    background-color: rgb(44,101,248);
+}
+
 /* 返回已绑定界面按钮 */
 .exittobounded1{
     margin-top: 40px;

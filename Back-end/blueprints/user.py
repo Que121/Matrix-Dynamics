@@ -11,8 +11,10 @@ from blueprints.forms import RegisterForm, LoginForm, ResetForm
 from werkzeug.security import generate_password_hash, check_password_hash
 
 bp = Blueprint("user", __name__, url_prefix="/user")
-global mforward
 mforward = 0
+mleft = 0
+mauto = 0
+StringAuto = '自动巡航模式关闭'
 
 
 @bp.route("/equipment")
@@ -32,14 +34,18 @@ def equipment1_2():
 
 @bp.route("/forward", methods=['POST'])
 def forward():
-    mforward = 1
+    global mforward
+    mforward += 1
     print("前进", mforward)
+    if (mforward == 5):
+        mforward = 0
     return jsonify({"code": 200})
 
 
 @bp.route("/left", methods=['POST'])
 def left():
-    mleft = 1
+    global mleft
+    mleft += 1
     print("向左", mleft)
     return jsonify({"code": 200})
 
@@ -55,6 +61,20 @@ def backward():
 def right():
     mright = 1
     print("向右", mright)
+    return jsonify({"code": 200})
+
+
+@bp.route("/auto", methods=['POST'])
+def auto():
+    global mauto
+    global StringAuto
+    mauto += 1
+    StringAuto = "自动巡航模式开启"
+    if mauto == 2:
+        print("自动巡航模式关闭")
+        StringAuto = "自动巡航模式关闭"
+        mauto = 0
+    print("自动巡航模式")
     return jsonify({"code": 200})
 
 
@@ -87,7 +107,9 @@ def equipment3():
                            message_submit_car_temperature=message_submit_car_temperature,
                            message_submit_car_humidity=message_submit_car_humidity,
                            message_submit_forward_speed=message_submit_forward_speed,
-                           message_submit_steering_speed=message_submit_steering_speed)
+                           message_submit_steering_speed=message_submit_steering_speed,
+                           mforward=mforward,
+                           StringAuto=StringAuto)
 
 
 @bp.route("/success")
