@@ -5,14 +5,78 @@ from flask_mail import Message
 from models import EmailCaptchaModel, UserModel, ResetCaptchaModel
 import string
 import random
-import datetime, time
+import datetime
+import time
 import blueprints
 from blueprints.forms import RegisterForm, LoginForm, ResetForm
 from werkzeug.security import generate_password_hash, check_password_hash
+from Mqtt_demo.keyboard_control import *
+from Mqtt_demo.car_message import *
+import threading
+from paho.mqtt import client as mqtt_client
+from Mqtt_demo.car_message import *
+import random
+import time
+from turtle import forward
+import sys
+import os
+from linecache import cache
+from nis import match
+from operator import index
+import random
+from socket import MsgFlag
+from unittest import case
 
-bp = Blueprint("user", __name__, url_prefix="/user")
-global mforward
+
+# 设置 MQTT Broker 连接参数 pub
+broker_pub = '43.138.132.49'
+port_pub = 1883
+topic_pub = "car_control"
+# generate client ID with pub prefix randomly
+client_id_pub = f'python-mqtt-{random.randint(0, 1000)}'
+
+
+# 设置 MQTT Broker 连接参数 sub
+broker_sub = '43.138.132.49'
+port_sub = 1883
+topic_sub = "car_state"
+# generate client ID with pub prefix randomly
+client_id_sub = f'python-mqtt-{random.randint(0, 100)}'
+msg_sub = "default"
+car_state = "ID:01_GPS:E11919.42N2605.30GTime:00:00:00_OFF_OFF_Wt:000_D:0.00_P:0.0Y:0.0B:000_T:31.7_H:49.0_Ready"
+
+global car_header, car_gps_longitude, car_gps_latitude, \
+    car_gps_GTime, car_motor, car_water, car_distance,  \
+    car_pitch, car_yaw, car_battery, car_temperature,  \
+    car_humidity, car_end, car_errorcode
+global mauto
+car_header = 0
+car_gps_longitude = 0
+car_gps_latitude = 0
+car_gps_GTime = 0
+car_motor = 0
+car_water = 0
+car_distance = 0
+car_pitch = 0
+car_yaw = 0
+car_battery = 0
+car_temperature = 0
+car_humidity = 0
+car_end = 0
+car_errorcode = 0
+flash_flag = 0
+# 小车控制报文定义
+frame_header = "CTR"  # 帧头
+car_id_ten = 0  # 小车id十位
+car_id_bit = 1  # 小车id个位
+frame_end = "\n"  # 帧尾
+
 mforward = 0
+mleft = 0
+mauto = 0
+StringAuto = '自动巡航模式关闭'
+water_pump = 0
+bp = Blueprint("user", __name__, url_prefix="/user")
 
 
 @bp.route("/equipment")
@@ -32,35 +96,243 @@ def equipment1_2():
 
 @bp.route("/forward", methods=['POST'])
 def forward():
-    mforward = 1
-    print("前进", mforward)
+    global steering_speed, forward_speed, power_on, water_pump
+    power_on = 1  # 发1（并且无其它电机操作）解除电机锁 电机上电。
+    # water_pump = 1  # 1开水泵 0关水泵
+    if (forward_speed > 5):
+        forward_speed -= forward_speed
+    elif (forward_speed == 5):
+        forward_speed = 5
+    elif (forward_speed >= 0 and forward_speed < 5):
+        forward_speed += 1
+    else:
+        forward_speed = 0
+    print(f"前进速度：{forward_speed}")
     return jsonify({"code": 200})
 
 
 @bp.route("/left", methods=['POST'])
 def left():
-    mleft = 1
-    print("向左", mleft)
+    #值1-4是左转
+    global steering_speed, forward_speed, power_on, water_pump
+    power_on = 1  # 发1（并且无其它电机操作）解除电机锁 电机上电。
+    # water_pump = 1  # 1开水泵 0关水泵
+    if (steering_speed == 5):
+        steering_speed = 0
+    if (steering_speed >= 0 and steering_speed < 5):
+        steering_speed += 1
+    if (steering_speed < 0):
+        steering_speed = 0
+    if (steering_speed >= 5 and steering_speed < 10):
+        steering_speed -= 1
+    print(f"转向速度：{steering_speed}")
     return jsonify({"code": 200})
 
 
 @bp.route("/backward", methods=['POST'])
 def backward():
-    mbackward = 1
-    print("后退", mbackward)
+    global steering_speed, forward_speed, power_on, water_pump
+    power_on = 1  # 发1（并且无其它电机操作）解除电机锁 电机上电。
+    # water_pump = 1  # 1开水泵 0关水泵
+    if (forward_speed >= 0 and forward_speed < 5):
+        forward_speed -= 1
+    elif (forward_speed == 5):
+        forward_speed = 4
+    if (forward_speed == -1):
+        forward_speed = 5
+    if (forward_speed >= 5):
+        forward_speed = forward_speed + 1
+
+    print(f"前进速度：{forward_speed}")
     return jsonify({"code": 200})
 
 
 @bp.route("/right", methods=['POST'])
 def right():
-    mright = 1
-    print("向右", mright)
+    global steering_speed, forward_speed, power_on, water_pump
+    power_on = 1  # 发1（并且无其它电机操作）解除电机锁 电机上电。
+    # water_pump = 1  # 1开水泵 0关水泵
+    if (steering_speed == 0):
+        steering_speed = 5
+    if (steering_speed >= 5 and steering_speed < 9):
+        steering_speed += 1
+    if (steering_speed < 5 and steering_speed > 0):
+        steering_speed -= 1
+    print(f"转向速度：{steering_speed}")
     return jsonify({"code": 200})
+
+
+@bp.route("/fwater", methods=['POST'])
+def fwater():
+    global steering_speed, forward_speed, power_on, water_pump
+    power_on = 1  # 发1（并且无其它电机操作）解除电机锁 电机上电。
+    water_pump = not water_pump  # 1开水泵 0关水泵
+    print(f"浇水开关：{water_pump}")
+    return jsonify({"code": 200})
+
+
+@bp.route("/auto", methods=['POST'])
+def auto():
+    global mauto
+    global StringAuto
+    mauto += 1
+    StringAuto = "自动巡航模式开启"
+    if mauto == 2:
+        print("自动巡航模式关闭")
+        StringAuto = "自动巡航模式关闭"
+        mauto = 0
+    print("自动巡航模式")
+    return jsonify({"code": 200})
+
+# MQTT连接函数 pub
+
+
+def connect_mqtt():
+    def on_connect(client_pub, userdata, flags, rc):
+        if rc == 0:
+            print("Connected to MQTT Broker pub!")
+        else:
+            print("Failed to connect, return code %d\n", rc)
+
+    client_pub = mqtt_client.Client(client_id_pub)
+    client_pub.on_connect = on_connect
+    client_pub.connect(broker_pub, port_pub)
+    return client_pub
+
+# MQTT连接函数 sub
+
+
+def connect_mqtt_sub() -> mqtt_client:
+    def on_connect(client_sub, userdata, flags, rc):
+        if rc == 0:
+            print("Connected to MQTT Broker sub!")
+        else:
+            print("SUB Failed to connect, return code %d\n", rc)
+
+    client_sub = mqtt_client.Client(client_id_sub)
+    client_sub.on_connect = on_connect
+    client_sub.connect(broker_sub, port_sub)
+    return client_sub
+
+# 发布消息
+
+
+def publish(client_pub):
+    while True:
+        time.sleep(2)
+        # 直接在函数里用
+        # 待发布的消息
+        msg_pub = f"{frame_header}{car_id_ten}{car_id_bit}{forward_speed}{steering_speed}{power_on}{water_pump}{frame_end}"
+        result = client_pub.publish(topic_pub, msg_pub)
+        # result: [0, 1]
+        status = result[0]
+        if status == 0:
+            print(f"发给小车的控制报文为：{msg_pub}")
+        else:
+            print(f"Failed to send message to topic pub {topic_pub}")
+
+# 发送报文
+
+
+def pub_run():
+    client_pub = connect_mqtt()
+    client_pub.loop_start()
+    publish(client_pub)
+
+# 订阅消息
+
+
+def subscribe(client_sub: mqtt_client):
+    def on_message(client_sub, userdata, msg_sub):
+        global car_state
+        car_state = msg_sub.payload.decode()  # 接收
+        print(f"{msg_sub.payload.decode()}")
+        decode()
+        print("\n")
+    client_sub.subscribe(topic_sub)
+    client_sub.on_message = on_message
+
+# 解码
+
+
+def decode():
+    global car_header, car_gps_longitude, car_gps_latitude, \
+        car_gps_GTime, car_motor, car_water, car_distance,  \
+        car_pitch, car_yaw, car_battery, car_temperature,  \
+        car_humidity, car_end, car_errorcode
+# =======================================================================================
+    for index_header in range(len(car_state[:(len(car_state)-5)])):
+        if ((f"{car_state[index_header]}{car_state[index_header+1]}") == "ID"):
+            for index_end in range(len(car_state[index_header:(len(car_state)-5)])):
+                if ((f"{car_state[index_end]}{car_state[index_end+1]}") == "GP"):
+                    car_header = car_state[index_header+3:index_end-1]
+# =======================================================================================
+        elif ((f"{car_state[index_header]}") == "E"):
+            for index_end in range(len(car_state[index_header:(len(car_state)-5)])):
+                if ((f"{car_state[index_end]}") == "N"):
+                    car_gps_longitude = car_state[index_header:index_end]
+# =======================================================================================
+        elif ((f"{car_state[index_header]}") == "N"):
+            for index_end in range(len(car_state[index_header:(len(car_state)-5)])):
+                if ((f"{car_state[index_end]}{car_state[index_end+1]}") == "GT"):
+                    car_gps_latitude = car_state[index_header:index_end]
+# =======================================================================================
+        elif ((f"{car_state[index_header]}{car_state[index_header+1]}") == "GT"):
+            car_gps_GTime = car_state[index_header+6:index_header+14]
+# =======================================================================================
+        elif ((f"{car_state[index_header]}{car_state[index_header+1]}") == "me"):
+            for index_end in range(len(car_state[index_header:(len(car_state)-5)])):
+                if ((f"{car_state[index_end]}{car_state[index_end+1]}") == "Wt"):
+                    car_motor = car_state[index_header+12:index_end-1]
+# =======================================================================================
+        elif ((f"{car_state[index_header]}{car_state[index_header+1]}") == "Wt"):
+            car_water = car_state[index_header+3:index_header+6]
+# =======================================================================================
+        elif ((f"{car_state[index_header]}") == "D"):
+            car_distance = car_state[index_header+2:index_header+6]
+# =======================================================================================
+        elif ((f"{car_state[index_header]}") == "P"):
+            car_pitch = car_state[index_header+2:index_header+5]
+# =======================================================================================
+        elif ((f"{car_state[index_header]}") == "Y"):
+            car_yaw = car_state[index_header+2:index_header+5]
+# =======================================================================================
+        elif ((f"{car_state[index_header]}") == "B"):
+            car_battery = car_state[index_header+2:index_header+5]
+# =======================================================================================
+        elif ((f"{car_state[index_header]}") == "T"):
+            car_temperature = car_state[index_header+2:index_header+6]
+# =======================================================================================
+        elif ((f"{car_state[index_header]}") == "H"):
+            car_humidity = car_state[index_header+2:index_header+6]
+# =======================================================================================
+    car_end = car_state[(len(car_state)-6):(len(car_state)-1)]
+    car_errorcode = car_state[(len(car_state)-1)]
+    for index_header in range(len(car_state)):
+        if ((f"{car_state[index_header]}") == "R"):
+            car_end = car_state[(len(car_state)-5):]
+            car_errorcode = 0
+# =======================================================================================
+    print(f"{car_header}\n{car_gps_longitude}\n{car_gps_latitude} \
+      \n{car_gps_GTime}\n{car_motor}\n{car_water} \
+      \n{car_distance}\n{car_pitch}\n{car_yaw} \
+      \n{car_battery}\n{car_temperature}\n{car_humidity}\n{car_end} \
+      \n{car_errorcode}")
+
+
+def sub_run():
+    client_sub = connect_mqtt_sub()
+    subscribe(client_sub)
+    client_sub.loop_forever()
 
 
 @bp.route("equipment3", methods=['GET', 'POST'])
 def equipment3():
-    message_water = "水泵关闭"
+    thread_sub = threading.Thread(target=sub_run)
+    thread_sub.start()
+    thread_pub = threading.Thread(target=pub_run)
+    thread_pub.start()
+    message_water = "水泵开启"
     message_power = "电源关闭"
     # 经度（东/西）E/W
     message_submit_car_gps_longitude = f"小车的经度为：{1}"
@@ -87,8 +359,9 @@ def equipment3():
                            message_submit_car_temperature=message_submit_car_temperature,
                            message_submit_car_humidity=message_submit_car_humidity,
                            message_submit_forward_speed=message_submit_forward_speed,
-                           message_submit_steering_speed=message_submit_steering_speed)
-
+                           message_submit_steering_speed=message_submit_steering_speed,
+                           mforward=mforward,
+                           StringAuto=StringAuto)
 
 @bp.route("/success")
 def success():

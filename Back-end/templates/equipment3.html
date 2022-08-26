@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,167 +8,204 @@
   <title>设备界面3</title>
   <link rel="stylesheet" href="/static/bootstrap/devicesbounded4/mystyle2.css">
   <script src="{{ url_for('static',filename='jquery//jquery.3.6.min.js') }}"></script>
+  <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet" />
+  <script src="https://unpkg.com/video.js/dist/video.js"></script>
+  <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
 </head>
 
 <script type="text/javascript">
-    function init() {
-        //页面键盘点击时触发
-        document.onkeydown = showKeyDown;
+
+
+  function init() {
+    //页面键盘点击时触发
+    document.onkeydown = showKeyDown;
+  }
+
+  function Refresh() {
+    window.location.reload();
+  }
+
+  function showKeyDown(evt) {
+    evt = (evt) ? evt : window.event;
+
+
+    if (evt.keyCode == 87) {
+      W();
     }
-
-    function showKeyDown(evt) {
-        evt = (evt) ? evt : window.event;
-
-
-        if (evt.keyCode == 87) {
-            W();
-        }
-        if (evt.keyCode == 65) {
-            A();
-        }
-        if (evt.keyCode == 83) {
-            S();
-        }
-        if (evt.keyCode == 68) {
-            D();
-        }
+    if (evt.keyCode == 65) {
+      A();
     }
-
-    function W() {
-        alert("前进")
-        $.ajax({
-            url:"/user/forward",
-            method:'POST'
-        })
+    if (evt.keyCode == 83) {
+      S();
     }
-
-    function A() {
-        alert("向左")
-        $.ajax({
-            url:"/user/left",
-            method:'POST'
-        })
+    if (evt.keyCode == 68) {
+      D();
     }
-
-    function S() {
-        alert("后退")
-        $.ajax({
-            url:"/user/backward",
-            method:'POST'
-        })
+    if (evt.keyCode == 70) {
+      F();
     }
+  }
 
-    function D() {
-        alert("向右")
-        $.ajax({
-            url:"/user/right",
-            method:'POST'
-        })
-    }
+  function W() {
+    $.ajax({
+      url: "/user/forward",
+      method: 'POST'
+    })
+  }
+
+  function A() {
+    alert("向左")
+    $.ajax({
+      url: "/user/left",
+      method: 'POST'
+    })
+  }
+
+  function S() {
+    alert("后退")
+    $.ajax({
+      url: "/user/backward",
+      method: 'POST'
+    })
+  }
+
+  function D() {
+    alert("向右")
+    $.ajax({
+      url: "/user/right",
+      method: 'POST'
+    })
+  }
+
+  function F() {
+    $.ajax({
+      url: "/user/fwater",
+      method: 'POST'
+    })
+  }
+
+  function auto() {
+    $.ajax({
+      url: "/user/auto",
+      method: 'POST'
+    })
+  }
 
 </script>
 
 <body onload="init()">
-<!-- 导航栏 -->
-<header>
-  <ul class="navigation">
-    <li><a href="{{ url_for('user.index') }}">关于</a></li>
-    <li><a href="{{ url_for('user.mainindex') }}">首页</a></li>
-    <li><a href="{{ url_for('user.team') }}">团队</a></li>
-    <li><a href="{{ url_for('user.purchase') }}">购买</a></li>
-    {% if user %}
+  <!-- 导航栏 -->
+  <header>
+    <ul class="navigation">
+      <li><a href="{{ url_for('user.index') }}">关于</a></li>
+      <li><a href="{{ url_for('user.mainindex') }}">首页</a></li>
+      <li><a href="{{ url_for('user.team') }}">团队</a></li>
+      <li><a href="{{ url_for('user.purchase') }}">购买</a></li>
+      {% if user %}
       <Li><a href="{{ url_for('user.mine') }}">{{ user.username }}</a></Li>
-    {% else %}
+      {% else %}
       <li><a href="{{ url_for('user.register') }}">注册</a></li>
-    {% endif %}
-  </ul>
-</header>
+      {% endif %}
+    </ul>
+  </header>
 
-<div style="margin: 0 auto;width:1250px">
-  <!-- 左上角logo图标 -->
-  <img id="logo" src="/static/images/logo.png" style="z-index:2;position: relative;text-align: left;"> <br>
-  <!-- 左上角的直角三角形 -->
-  <div>
-    <img src="/static/images/Triangle_left.png" id="Triangle_left"
-         style="position: relative;text-align: left;margin-top: -76px;width: 150px;height: 400px;">
-  </div>
-  <!-- 右下角的直角三角形 -->
-</div>
-
-<div align="center" style="width: 1000px;margin:-390px auto 0 auto;;">
-  <!-- 图传提示文字 -->
-  <p id="tip2">*默认为wasd行走，鼠标控制视角，左键浇水</p>
-  <!-- 图传区域 -->
-  <div>
-    <div id="area" style="border: 1px solid;margin-left: -560px;
-            width: 430px;height: 430px;">
+  <div style="margin: 0 auto;width:1250px">
+    <!-- 左上角logo图标 -->
+    <img id="logo" src="/static/images/logo.png" style="z-index:2;position: relative;text-align: left;"> <br>
+    <!-- 左上角的直角三角形 -->
+    <div>
+      <img src="/static/images/Triangle_left.png" id="Triangle_left"
+        style="position: relative;text-align: left;margin-top: -76px;width: 150px;height: 400px;">
     </div>
-    <button class="shuaxin">
-      点击此处进行刷新
-    </button>
-    <div id="area" style="border: 1px solid;margin:-380px auto 0px 495px;position: absolute;
+    <!-- 右下角的直角三角形 -->
+  </div>
+
+  <div align="center" style="width: 1000px;margin:-390px auto 0 auto;;">
+    <!-- 图传提示文字 -->
+    <p id="tip2">*默认为wasd行走，鼠标控制视角，左键浇水</p>
+    <!-- 图传区域 -->
+    <div>
+      <div id="area" style="border: 1px solid;margin-left: -560px;
+            width: 430px;height: 430px;margin-top: 20px">
+        <video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto" width="430" height="430"
+          data-setup="{}">
+          <source src="http://43.138.86.243:8090/live/1.m3u8" type="application/x-mpegURL" />
+        </video>
+      </div>
+      <button class="shuaxin" onclick="Refresh()">
+        点击此处进行刷新
+      </button>
+      <div id="area" style="border: 1px solid;margin:-380px auto 0px 495px;position: absolute;
             width: 280px;height: 380px;">
-      <div style="margin-top: 30px">{{ message_submit_car_gps_longitude }}
-        <br>{{ message_submit_car_gps_latitude }}
-        <br>{{ message_submit_car_motor_car }}
-        <br>{{ message_submit_car_motor_pumb }}
-        <br>{{ message_submit_car_water }}
-        <br>{{ message_submit_car_distance }}
-        <br>{{ message_submit_car_pitch }}
-        <br>{{ message_submit_car_battery }}
-        <br>{{ message_submit_car_temperature }}
-        <br>{{ message_submit_car_humidity }}
-        <br>{{ message_submit_forward_speed }}
-        <br>{{ message_submit_steering_speed }}</div>
+        <div style="margin-top: 30px">{{ message_submit_car_gps_longitude }}
+          <br>{{ message_submit_car_gps_latitude }}
+          <br>{{ message_submit_car_motor_car }}
+          <br>{{ message_submit_car_motor_pumb }}
+          <br>{{ message_submit_car_water }}
+          <br>{{ message_submit_car_distance }}
+          <br>{{ message_submit_car_pitch }}
+          <br>{{ message_submit_car_battery }}
+          <br>{{ message_submit_car_temperature }}
+          <br>{{ message_submit_car_humidity }}
+          <br>{{ message_submit_forward_speed }}
+          <br>{{ message_submit_steering_speed }}
+          <br>现在小车的前进速度是{{ mforward }}
+          <br>{{ StringAuto }}
+        </div>
 
+      </div>
+      <button class="move" style="position: absolute;margin:-330px 100px 0px 390px" onclick="W()" id="forward">
+        <img src="/static/images/up.png" alt="" class="tupian">
+      </button>
+      <button class="move" style="position: absolute;margin:-250px 100px 0px 310px" onclick="A()" id="left">
+        <img src="/static/images/left.png" alt="" class="tupian">
+      </button>
+      <button class="move" style="position: absolute;margin:-250px 100px 0px 475px;z-index: 10;" onclick="D()"
+        id="right">
+        <img src="/static/images/right.png" alt="" class="tupian">
+      </button>
+      <button class="move" style="position: absolute;margin:-174px 100px 0px 395px" onclick="S()" id="backward">
+        <img src="/static/images/down.png" alt="" class="tupian">
+      </button>
+      <button class="shui" style="position: absolute;margin:-265px 100px 0px 384px" onclick="F()"
+        id="fwater">浇水</button>
+      <button class="auto" style="position: absolute;margin: -380px 100px 0px 375px;" onclick="auto()">auto</button>
     </div>
-    <button class="move" style="position: absolute;margin:-330px 100px 0px 390px" onclick="W()" id="forward">
-      <img src="/static/images/up.png" alt="" class="tupian">
-    </button>
-    <button class="move" style="position: absolute;margin:-250px 100px 0px 310px" onclick="A()" id="left">
-      <img src="/static/images/left.png" alt="" class="tupian">
-    </button>
-    <button class="move" style="position: absolute;margin:-250px 100px 0px 475px;z-index: 10;" onclick="D()" id="right">
-      <img src="/static/images/right.png" alt="" class="tupian">
-    </button>
-    <button class="move" style="position: absolute;margin:-174px 100px 0px 395px" onclick="S()" id="backward">
-      <img src="/static/images/down.png" alt="" class="tupian">
-    </button>
-    <button class="shui" style="position: absolute;margin:-265px 100px 0px 384px">浇水</button>
   </div>
-</div>
 
-<!-- 返回到已绑定设备界面 按钮 -->
-<br><br>
-<div align="center">
-  <a href="{{ url_for('user.bounded') }}">
-    <button class="exittobounded1" type="exit"><strong>返回</strong></button>
-  </a>
-</div>
-<div style="margin: 0 auto;width:1250px;text-align: right;">
-  <img src="/static/images/Triangle_right.png" alt="" id="Triangle_right"
-       style="position: relative;top: -370px;width: 150px;height: 400px;">
-</div>
+  <!-- 返回到已绑定设备界面 按钮 -->
+  <br><br>
+  <div align="center">
+    <a href="#" onClick="javascript :history.back(-1);">
+      <button class="exittobounded1" type="exit"><strong>返回</strong></button>
+    </a>
 
-<!-- 版权 -->
-<div id="div4">
-  <h4 align="center" style="margin-top: -250px;font-size: 20px;">矩阵动力</h4>
-</div>
+  </div>
+  <div style="margin: 0 auto;width:1250px;text-align: right;">
+    <img src="/static/images/Triangle_right.png" alt="" id="Triangle_right"
+      style="position: relative;top: -370px;width: 150px;height: 400px;">
+  </div>
 
-<div id="div5" style="color: rgb(176,176,176); font-size: 13px;width: 298px;margin: 10px auto;">
-  <p>地址：北京市海淀区清华东路35号北京林业大学</p>
-  <p>电话：298-63985466</p>
-  <p>邮箱：qh13005968844@gmail.com</p>
-</div>
+  <!-- 版权 -->
+  <div id="div4">
+    <h4 align="center" style="margin-top: -250px;font-size: 20px;">矩阵动力</h4>
+  </div>
 
-<div id="div6" align="center">
-  <img src="/static/images/weibo.png" alt="">
-  <img src="/static/images/wechat.png" alt="">
-  <img src="/static/images/twitter.png" alt="">
-</div>
+  <div id="div5" style="color: rgb(176,176,176); font-size: 13px;width: 298px;margin: 10px auto;">
+    <p>地址：北京市海淀区清华东路35号北京林业大学</p>
+    <p>电话：298-63985466</p>
+    <p>邮箱：qh13005968844@gmail.com</p>
+  </div>
 
-<p align="center" style="color: rgb(176,176,176);margin-top: 60px;font-size: 13px;">
-  ©2022 aone.版权所有.
-</p>
+  <div id="div6" align="center">
+    <img src="/static/images/weibo.png" alt="">
+    <img src="/static/images/wechat.png" alt="">
+    <img src="/static/images/twitter.png" alt="">
+  </div>
+
+  <p align="center" style="color: rgb(176,176,176);margin-top: 60px;font-size: 13px;">
+    ©2022 aone.版权所有.
+  </p>
 </body>
+
 </html>
