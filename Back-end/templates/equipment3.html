@@ -8,7 +8,14 @@
   <title>设备界面3</title>
   <link rel="stylesheet" href="/static/bootstrap/devicesbounded4/mystyle2.css">
   <script src="{{ url_for('static',filename='jquery//jquery.3.6.min.js') }}"></script>
+<<<<<<< HEAD
   <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet" />
+=======
+  <link
+          href="https://unpkg.com/video.js/dist/video-js.css"
+          rel="stylesheet"
+  />
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
   <script src="https://unpkg.com/video.js/dist/video.js"></script>
   <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
 </head>
@@ -16,6 +23,7 @@
 <script type="text/javascript">
 
 
+<<<<<<< HEAD
   function init() {
     //页面键盘点击时触发
     document.onkeydown = showKeyDown;
@@ -43,9 +51,60 @@
     }
     if (evt.keyCode == 70) {
       F();
+=======
+    function init() {
+        //页面键盘点击时触发
+        document.onkeydown = showKeyDown;
+    }
+
+    function Refresh() {
+        window.location.reload();
+    }
+
+    function showKeyDown(evt) {
+        evt = (evt) ? evt : window.event;
+
+
+        if (evt.keyCode == 87) {
+            W();
+        }
+        if (evt.keyCode == 65) {
+            A();
+        }
+        if (evt.keyCode == 83) {
+            S();
+        }
+        if (evt.keyCode == 68) {
+            D();
+        }
+    }
+
+    function W() {
+        $.ajax({
+            url: "/user/forward",
+            method: 'POST'
+        })
+    }
+
+    function A() {
+        alert("向左")
+        $.ajax({
+            url: "/user/left",
+            method: 'POST'
+        })
+    }
+
+    function S() {
+        alert("后退")
+        $.ajax({
+            url: "/user/backward",
+            method: 'POST'
+        })
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
     }
   }
 
+<<<<<<< HEAD
   function W() {
     $.ajax({
       url: "/user/forward",
@@ -90,6 +149,22 @@
       method: 'POST'
     })
   }
+=======
+    function D() {
+        alert("向右")
+        $.ajax({
+            url: "/user/right",
+            method: 'POST'
+        })
+    }
+
+    function auto() {
+        $.ajax({
+            url: "/user/auto",
+            method: 'POST'
+        })
+    }
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
 
 </script>
 
@@ -109,6 +184,7 @@
     </ul>
   </header>
 
+<<<<<<< HEAD
   <div style="margin: 0 auto;width:1250px">
     <!-- 左上角logo图标 -->
     <img id="logo" src="/static/images/logo.png" style="z-index:2;position: relative;text-align: left;"> <br>
@@ -152,6 +228,61 @@
           <br>现在小车的前进速度是{{ mforward }}
           <br>{{ StringAuto }}
         </div>
+=======
+<div style="margin: 0 auto;width:1250px">
+  <!-- 左上角logo图标 -->
+  <img id="logo" src="/static/images/logo.png" style="z-index:2;position: relative;text-align: left;"> <br>
+  <!-- 左上角的直角三角形 -->
+  <div>
+    <img src="/static/images/Triangle_left.png" id="Triangle_left"
+         style="position: relative;text-align: left;margin-top: -76px;width: 150px;height: 400px;">
+  </div>
+  <!-- 右下角的直角三角形 -->
+</div>
+
+<div align="center" style="width: 1000px;margin:-390px auto 0 auto;;">
+  <!-- 图传提示文字 -->
+  <p id="tip2">*默认为wasd行走，鼠标控制视角，左键浇水</p>
+  <!-- 图传区域 -->
+  <div>
+    <div id="area" style="border: 1px solid;margin-left: -560px;
+            width: 430px;height: 430px;margin-top: 20px">
+      <video
+              id="my_video_1"
+              class="video-js vjs-default-skin"
+              controls
+              preload="auto"
+              width="430"
+              height="430"
+              data-setup="{}"
+      >
+        <source
+                src="http://43.138.86.243:8090/live/1.m3u8"
+                type="application/x-mpegURL"
+        />
+      </video>
+    </div>
+    <button class="shuaxin" onclick="Refresh()">
+      点击此处进行刷新
+    </button>
+    <div id="area" style="border: 1px solid;margin:-380px auto 0px 495px;position: absolute;
+            width: 280px;height: 380px;">
+      <div style="margin-top: 30px">{{ message_submit_car_gps_longitude }}
+        <br>{{ message_submit_car_gps_latitude }}
+        <br>{{ message_submit_car_motor_car }}
+        <br>{{ message_submit_car_motor_pumb }}
+        <br>{{ message_submit_car_water }}
+        <br>{{ message_submit_car_distance }}
+        <br>{{ message_submit_car_pitch }}
+        <br>{{ message_submit_car_battery }}
+        <br>{{ message_submit_car_temperature }}
+        <br>{{ message_submit_car_humidity }}
+        <br>{{ message_submit_forward_speed }}
+        <br>{{ message_submit_steering_speed }}
+        <br>现在小车的前进速度是{{ mforward }}
+        <br>{{ StringAuto }}
+      </div>
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
 
       </div>
       <button class="move" style="position: absolute;margin:-330px 100px 0px 390px" onclick="W()" id="forward">
@@ -171,14 +302,46 @@
         id="fwater">浇水</button>
       <button class="auto" style="position: absolute;margin: -380px 100px 0px 375px;" onclick="auto()">auto</button>
     </div>
+<<<<<<< HEAD
+=======
+    <button class="move" style="position: absolute;margin:-330px 100px 0px 390px" onclick="W()" id="forward">
+      <img src="/static/images/up.png" alt="" class="tupian">
+    </button>
+    <button class="move" style="position: absolute;margin:-250px 100px 0px 310px" onclick="A()" id="left">
+      <img src="/static/images/left.png" alt="" class="tupian">
+    </button>
+    <button class="move" style="position: absolute;margin:-250px 100px 0px 475px;z-index: 10;" onclick="D()" id="right">
+      <img src="/static/images/right.png" alt="" class="tupian">
+    </button>
+    <button class="move" style="position: absolute;margin:-174px 100px 0px 395px" onclick="S()" id="backward">
+      <img src="/static/images/down.png" alt="" class="tupian">
+    </button>
+    <button class="shui" style="position: absolute;margin:-265px 100px 0px 384px">浇水</button>
+    <button class="auto" style="position: absolute;margin: -380px 100px 0px 375px;" onclick="auto()">auto</button>
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
   </div>
 
+<<<<<<< HEAD
   <!-- 返回到已绑定设备界面 按钮 -->
   <br><br>
   <div align="center">
     <a href="#" onClick="javascript :history.back(-1);">
       <button class="exittobounded1" type="exit"><strong>返回</strong></button>
     </a>
+=======
+<!-- 返回到已绑定设备界面 按钮 -->
+<br><br>
+<div align="center">
+  <a href="#" onClick="javascript :history.back(-1);">
+    <button class="exittobounded1" type="exit"><strong>返回</strong></button>
+  </a>
+
+</div>
+<div style="margin: 0 auto;width:1250px;text-align: right;">
+  <img src="/static/images/Triangle_right.png" alt="" id="Triangle_right"
+       style="position: relative;top: -370px;width: 150px;height: 400px;">
+</div>
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
 
   </div>
   <div style="margin: 0 auto;width:1250px;text-align: right;">

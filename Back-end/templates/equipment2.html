@@ -16,7 +16,7 @@
     <li><a href="{{ url_for('user.team') }}">团队</a></li>
     <li><a href="{{ url_for('user.purchase') }}">购买</a></li>
     {% if user %}
-       <Li><a href="{{ url_for('user.mine') }}">{{ user.username }}</a></Li>
+      <Li><a href="{{ url_for('user.mine') }}">{{ user.username }}</a></Li>
     {% else %}
       <li><a href="{{ url_for('user.register') }}">注册</a></li>
     {% endif %}
@@ -38,12 +38,12 @@
 <div style="margin: 0 auto;width:1250px">
   <!-- 左边的矩形 -->
   <div style="position: relative;text-align: left;">
-    <img src="rectangle_left.png" style="margin-top: 151px;">
+    <img src="/static/images/rectangle_left.png" style="margin-top: 151px;">
   </div>
 
   <!-- 右边的矩形 -->
   <div style="position: relative; margin-top: -844px;text-align: right;">
-    <img src="rectangle_right.png">
+    <img src="/static/images/rectangle_right.png">
   </div>
 </div>
 

@@ -71,12 +71,19 @@ car_id_ten = 0  # 小车id十位
 car_id_bit = 1  # 小车id个位
 frame_end = "\n"  # 帧尾
 
+<<<<<<< HEAD
+=======
+bp = Blueprint("user", __name__, url_prefix="/user")
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
 mforward = 0
 mleft = 0
 mauto = 0
 StringAuto = '自动巡航模式关闭'
+<<<<<<< HEAD
 water_pump = 0
 bp = Blueprint("user", __name__, url_prefix="/user")
+=======
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
 
 
 @bp.route("/equipment")
@@ -96,6 +103,7 @@ def equipment1_2():
 
 @bp.route("/forward", methods=['POST'])
 def forward():
+<<<<<<< HEAD
     global steering_speed, forward_speed, power_on, water_pump
     power_on = 1  # 发1（并且无其它电机操作）解除电机锁 电机上电。
     # water_pump = 1  # 1开水泵 0关水泵
@@ -108,11 +116,19 @@ def forward():
     else:
         forward_speed = 0
     print(f"前进速度：{forward_speed}")
+=======
+    global mforward
+    mforward += 1
+    print("前进", mforward)
+    if (mforward == 5):
+        mforward = 0
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
     return jsonify({"code": 200})
 
 
 @bp.route("/left", methods=['POST'])
 def left():
+<<<<<<< HEAD
     #值1-4是左转
     global steering_speed, forward_speed, power_on, water_pump
     power_on = 1  # 发1（并且无其它电机操作）解除电机锁 电机上电。
@@ -126,6 +142,11 @@ def left():
     if (steering_speed >= 5 and steering_speed < 10):
         steering_speed -= 1
     print(f"转向速度：{steering_speed}")
+=======
+    global mleft
+    mleft += 1
+    print("向左", mleft)
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
     return jsonify({"code": 200})
 
 
@@ -162,6 +183,7 @@ def right():
     return jsonify({"code": 200})
 
 
+<<<<<<< HEAD
 @bp.route("/fwater", methods=['POST'])
 def fwater():
     global steering_speed, forward_speed, power_on, water_pump
@@ -171,6 +193,8 @@ def fwater():
     return jsonify({"code": 200})
 
 
+=======
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
 @bp.route("/auto", methods=['POST'])
 def auto():
     global mauto
@@ -184,6 +208,7 @@ def auto():
     print("自动巡航模式")
     return jsonify({"code": 200})
 
+<<<<<<< HEAD
 # MQTT连接函数 pub
 
 
@@ -325,6 +350,8 @@ def sub_run():
     subscribe(client_sub)
     client_sub.loop_forever()
 
+=======
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
 
 @bp.route("equipment3", methods=['GET', 'POST'])
 def equipment3():
@@ -362,6 +389,10 @@ def equipment3():
                            message_submit_steering_speed=message_submit_steering_speed,
                            mforward=mforward,
                            StringAuto=StringAuto)
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5d83cd6eb359f6056ad3d8ad10dfe5ff7b47dab
 
 @bp.route("/success")
 def success():
