@@ -21,7 +21,7 @@
 
 ```
 .
-├── Back-end 后端代码（前端已集成）                       
+├── Back-end              后端代码（前端已集成）                       
 │   ├── app.py
 │   ├── blueprints
 │   ├── config.py
@@ -37,7 +37,7 @@
 │   ├── templates
 │   ├── test.txt
 │   └── venv
-├── Front-end 前端代码
+├── Front-end              前端代码
 │   ├── about
 │   ├── devicebounded1
 │   ├── devicebounded2-4
@@ -47,18 +47,18 @@
 │   ├── purchase
 │   ├── register_1
 │   └── team
-├── Hardware 硬件代码
-│   ├── MQTTWcarV1_demo esp32cam代码
-│   ├── openmv openmv4plus部分代码
-│   └── WaterCar_STM32 stm32代码
+├── Hardware               硬件代码
+│   ├── MQTTWcarV1_demo    esp32cam代码
+│   ├── openmv             openmv4plus部分代码
+│   └── WaterCar_STM32     stm32代码
 ├── LICENSE
-├── Mqtt_demo mqtt通讯demo
+├── Mqtt_demo              mqtt通讯demo
 │   ├── pub.py
 │   ├── __pycache__
 │   ├── sub.py
 │   └── test.py
 ├── README.md
-├── Solidworks-drawings 小车solidworks建模文件
+├── Solidworks-drawings    小车solidworks建模文件
 │   ├── 9G舵机.SLDPRT
 │   ├── 成品1
 │   ├── 履带底盘.SLDPRT
@@ -68,3 +68,19 @@
 │   └── GPS天线.SLDPRT
 
 ```
+## 三、服务器部署
+本项目皆使用腾讯云服务器
+### 1.mqtt服务器
+首先要在服务器开启1883和18083端口
+打开终端执行以下命令
+`wget https://www.emqx.io/downloads/broker/v4.0.5/emqx-ubuntu16.04-v4.0.5.zip`
+解压EMQ X Broker
+`unzip emqx-ubuntu16.04-v4.0.5.zip`
+进入解压出来的emqx文件夹，使用命令启动即可
+`sudo ./bin/emqx start`
+
+
+
+### 2.obs服务器
+### 3.database服务器
+### 4.web服务器（主服务器）
