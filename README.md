@@ -2,21 +2,21 @@
 
 此项目为北京林业大学-东方瑞通实习项目，以下为项目详情：
 
-## 一.项目平台
+## 一.项目平台 :fa-star: 
 
 ### 1.基本要求
-1.ubuntu20.04 版本云服务器 （本项目使用服务器 x 3）
-2.MySQL8.0 版本云数据库
-3.stm32
-4.esp32 cam s2
-5.openmv4 plus
+1. ubuntu20.04 版本云服务器 （本项目使用服务器 x 3）
+2. MySQL8.0 版本云数据库
+3. stm32
+4. esp32 cam s2
+5. openmv4 plus
 ### 2.开发软件
-1.vscode
-2.pycharm 2022专业版
-3.solidworks 2020
-4.
 
-## 二、项目目录
+1. vscode
+2. pycharm 2022专业版
+3. solidworks 2020
+
+## 二、项目目录 :fa-th-list: 
 
 
 ```
