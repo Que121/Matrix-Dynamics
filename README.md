@@ -73,7 +73,10 @@
 ### 1.mqtt服务器
 首先要在服务器开启1883和18083端口
 打开终端执行以下命令
-`wget https://www.emqx.io/downloads/broker/v4.0.5/emqx-ubuntu16.04-v4.0.5.zip`
+```
+wget https://www.emqx.io/downloads/broker/v4.0.5/emqx-ubuntu16.04-v4.0.5.zip
+
+```
 解压EMQ X Broker
 `unzip emqx-ubuntu16.04-v4.0.5.zip`
 进入解压出来的emqx文件夹，使用命令启动即可
