@@ -4,22 +4,24 @@
 
 ## 一.项目平台
 
+### 1.基本要求
 1.ubuntu20.04 版本云服务器 （本项目使用服务器 x 3）
-
 2.MySQL8.0 版本云数据库
-
 3.stm32
-
 4.esp32 cam s2
-
 5.openmv4 plus
+### 2.开发软件
+1.vscode
+2.pycharm 2022专业版
+3.solidworks 2020
+4.
 
 ## 二、项目目录
 
 
 ```
 .
-├── Back-end
+├── Back-end 后端代码（前端已集成）                       
 │   ├── app.py
 │   ├── blueprints
 │   ├── config.py
@@ -35,7 +37,7 @@
 │   ├── templates
 │   ├── test.txt
 │   └── venv
-├── Front-end
+├── Front-end 前端代码
 │   ├── about
 │   ├── devicebounded1
 │   ├── devicebounded2-4
@@ -45,18 +47,18 @@
 │   ├── purchase
 │   ├── register_1
 │   └── team
-├── Hardware
-│   ├── MQTTWcarV1_demo
-│   ├── openmv
-│   └── WaterCar_STM32
+├── Hardware 硬件代码
+│   ├── MQTTWcarV1_demo esp32cam代码
+│   ├── openmv openmv4plus部分代码
+│   └── WaterCar_STM32 stm32代码
 ├── LICENSE
-├── Mqtt_demo
+├── Mqtt_demo mqtt通讯demo
 │   ├── pub.py
 │   ├── __pycache__
 │   ├── sub.py
 │   └── test.py
 ├── README.md
-├── Solidworks-drawings
+├── Solidworks-drawings 小车solidworks建模文件
 │   ├── 9G舵机.SLDPRT
 │   ├── 成品1
 │   ├── 履带底盘.SLDPRT
