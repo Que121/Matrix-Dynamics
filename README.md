@@ -16,11 +16,14 @@
 
 ## 二、项目目录
 
+`├── Back-end `
 
-`├── Back-end \n`
 `│ ├── app.py`
+
 `│ ├── blueprints`
+
 `│ ├── config.py  `
+
 `│ ├── decorators.py`
 `│ ├── exts.py`
 `│ ├── migrations`
