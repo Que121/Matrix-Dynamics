@@ -16,9 +16,7 @@
 
 ## 二、项目目录
 
-、、、
-
-.
+`.
 ├── Back-end
 │ ├── app.py
 │ ├── blueprints
@@ -52,7 +50,7 @@
 ├── LICENSE
 ├── Mqtt_demo
 │ ├── pub.py
-│ ├── **pycache**
+│ ├── pycache
 │ ├── sub.py
 │ └── test.py
 ├── README.md
@@ -65,4 +63,4 @@
 ├── ESP32-CAM.SLDPRT
 └── GPS 天线.SLDPRT
 
-、、、
+`
