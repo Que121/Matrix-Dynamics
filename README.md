@@ -1,6 +1,6 @@
 # Matrix-Dynamics
 
-此项目为北京林业大学-东方瑞通实习项目，以下为项目详情：
+此项目为北京林业大学-东方瑞通实训项目，以下为项目详情：
 
 ## 一.项目平台 :fa-star: 
 
@@ -72,18 +72,28 @@
 本项目皆使用腾讯云服务器
 ### 1.mqtt服务器
 首先要在服务器开启1883和18083端口
+
 打开终端执行以下命令
 ```
 wget https://www.emqx.io/downloads/broker/v4.0.5/emqx-ubuntu16.04-v4.0.5.zip
-
 ```
 解压EMQ X Broker
-`unzip emqx-ubuntu16.04-v4.0.5.zip`
+```
+unzip emqx-ubuntu16.04-v4.0.5.zip
+```
 进入解压出来的emqx文件夹，使用命令启动即可
-`sudo ./bin/emqx start`
+```
+sudo ./bin/emqx start
+```
+在浏览器输入服务器公网ip加18083即可进入后端管理界面
+```
+ip:18083
+```
+![输入图片说明](Mqtt_demo/mqtt.png)
+默认账号为admin
 
-
-
+密码为public
 ### 2.obs服务器
+
 ### 3.database服务器
 ### 4.web服务器（主服务器）
